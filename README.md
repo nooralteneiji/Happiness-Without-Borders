@@ -8,6 +8,13 @@
 This entire block of text will be displayed in red.
 </div>
 
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 
 # Research Questions 
 **Temporal Trends in Happiness and Migration:**
