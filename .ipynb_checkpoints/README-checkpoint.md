@@ -2,18 +2,9 @@
 [Migration in/out flow for each country 1990-2020](https://ourworldindata.org/migration)
 
 *Countries with less immigrants, more genetically pure?*
-<span style="color:red;">account for people irrationally scoring their happiness</span>
-
-<div style="color: red;">
-This entire block of text will be displayed in red.
-</div>
 
 ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
+- account for people irrationally scoring their happiness
 ```
 
 # Research Questions 
