@@ -2,6 +2,7 @@
 [Migration in/out flow for each country 1990-2020](https://ourworldindata.org/migration)
 
 *Countries with less immigrants, more genetically pure?*
+<span style="color:red;">account for people irrationally scoring their happiness</span>
 
 # Research Questions 
 **Temporal Trends in Happiness and Migration:**
