@@ -4,6 +4,11 @@
 *Countries with less immigrants, more genetically pure?*
 <span style="color:red;">account for people irrationally scoring their happiness</span>
 
+<div style="color: red;">
+This entire block of text will be displayed in red.
+</div>
+
+
 # Research Questions 
 **Temporal Trends in Happiness and Migration:**
 Let us set the stage by providing a broad understanding of how migration patterns and happiness scores have shifted over time. Recognizing the trends at a macro level can form the foundation for more detailed inquiries.
