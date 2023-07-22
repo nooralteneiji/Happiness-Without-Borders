@@ -9,7 +9,7 @@
 
 ## Genetics
 ### results
-![forest plot]('https://worldhappiness.report/assets/images/2022/ch05/Fig.5.1.webp')
+![forest plot](https://worldhappiness.report/assets/images/2022/ch05/Fig.5.1.webp)
 - The paper reports that genetic influences (i.e., heritability) account for 32–40% of the variation in overall happiness (i.e., SWB, LS), and indicate that heritability varies across populations, subgroups, contexts and/or constructs [(Bang and Roysamb, 2017)](https://link.springer.com/article/10.1007/s10902-016-9781-6)
 
 - The weighted average heritability of well-being in the first review,[3] based on a sample size of 55,974 individuals, was estimated at 36% (95% CI: 34%-38%), while the weighted average heritability for satisfaction with life was 32% (95% CI: 29%-35%) (n = 47,750) [(Bartel et al., 2013)](https://www.pnas.org/doi/pdf/10.1073/pnas.1222171110) 
