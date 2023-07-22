@@ -1,11 +1,12 @@
+```diff
+- account for people irrationally scoring their happiness
+```
+
 # Dataset 
 [Migration in/out flow for each country 1990-2020](https://ourworldindata.org/migration)
 
 *Countries with less immigrants, more genetically pure?*
 
-```diff
-- account for people irrationally scoring their happiness
-```
 
 # Research Questions 
 **Temporal Trends in Happiness and Migration:**
