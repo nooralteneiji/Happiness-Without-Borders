@@ -75,7 +75,11 @@ a. Before seeing if there is a statistically significant difference between the 
 
 As we can see happiness scores have a bi-modal distribution and weight data is skewed to the left. 
 
+![distribution happiness source](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionHappiness_happiness_source.png)
 
+![distribution happiness target](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionHappiness_happiness_target.png)
+
+![distribution migration](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionMigration.png)
 
 
 ![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_globalTrend.png)

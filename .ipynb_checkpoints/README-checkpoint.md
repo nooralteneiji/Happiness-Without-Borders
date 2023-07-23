@@ -71,6 +71,17 @@ Building on the knowledge of how happiness relates to genetic diversity, it's a 
 ## Analysis 
 1. **Trend Analysis**: We visualized the trend in average migration weights over time, and superimposed the trend in average happiness scores for both source and destination countries. This gives us an insight into the general global migration trend in relation to happiness.
 
+a. Before seeing if there is a statistically significant difference between the groups, we need to see if data normally distributed (since it is an assumption made by out t-test later). 
+
+As we can see happiness scores have a bi-modal distribution and weight data is skewed to the left. 
+
+![distribution happiness source](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionHappiness_happiness_source.png)
+
+![distribution happiness target](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionHappiness_happiness_target.png)
+
+![distribution migration](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionMigration.png)
+
+
 ![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_globalTrend.png)
 
 3. **Difference in Happiness Scores**: We compared the distribution of differences in happiness scores (source - target) over time. If the distribution leans towards positive, it suggests people migrate to happier countries.
