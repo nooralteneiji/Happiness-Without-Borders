@@ -53,6 +53,9 @@ Now that we understand the overarching patterns, it's logical to then focus on t
 - How does an influx of migrants impact the happiness score of the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
 
 
+**(2) Are people migrating to happier countries?**
+- Chord plot with unhapping countries with people flowing to happier ones?
+
 **(3) Happiness and Genetic Diversity:**
 After exploring the direct impact of migration on happiness, this question delves deeper into understanding if there's any inherent relationship between a country's happiness score and the genetic diversity of its population.
 - Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
@@ -135,6 +138,7 @@ Based on the low p-values we reject the null hypothesis for all tests, indicatin
 The plot shows the trends and implications of migration weight and happiness over the years 2005, 2010, and 2015. The data is presented using two y-axes, with migration weight (transit_mean, return_mean, and outward_mean) represented on the left y-axis and happiness (happiness_source_mean and happiness_target_mean) represented on the right y-axis.
 
 Trends for Migration Weight:
+- Outward migration most popular.
 - Transit Mean: This represents the average migration over the years between two countries which individuals are not originally. It shows a decreasing trend from around 1421 in 2005 to about 534 in 2010 and then slightly increasing to approximately 559 in 2015.
 
 - Return Mean: This represents the average return migration weight over the years. It starts at around 4308 in 2005, decreases to approximately 3687 in 2010, and then continues to decline to about 3104 in 2015.
@@ -147,33 +151,7 @@ Trends for Happiness:
 Implications:
 1. Migration Trends: The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
 
-2. Happiness Levels: The negative trend in happiness_difference_mean implies that, on average, migration might have led to reduced happiness for the individuals involved. 
-
-
-
-
-
-
-
-**Relationship between Migration and Happiness**
-Looking at the happiness difference can provide insights into how migration impacts happiness at the target location. Positive values indicate that people tend to be happier in the target location compared to the source location, while negative values suggest the opposite. By examining the relationship between migration weight and happiness difference, we can gain a better understanding of how migration decisions might influence happiness outcomes.
-
-
-
-
-**a)** validate if there is a linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'), if so, we can use linear regression model.
-
-
-![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_relationshipValidation.png)
-
-The scatter plot indicates that there is a non-linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'). The high density of data points at 0, forming a straight vertical line, suggests that there is a concentration of cases where there is little or no change in happiness ('happiness_difference') despite varying 'migration_weight.' This phenomenon could be due to a specific group of individuals with similar characteristics or circumstances that experience minimal changes in happiness regardless of their migration weights.
-
-The clustering of data points horizontally between 1.5 and -2.3 indicates that there is some level of association between 'migration_weight' and 'happiness_difference,' but it is not linear. Instead, it shows that for certain values of 'migration_weight,' there are clusters of data points with similar happiness differences, suggesting a potential threshold effect or non-linear relationship.
-
-A Support Vector Machine (SVM) regression might better capture the underlying patterns in the data.
-
-1. Split X and Y from `differences_df`
-'y' will be the 'Happiness Difference,' and 'X' will include all the features we will use to control for socio-economic differences ('GDP', 'Social Support', 'Life Expectancy, corruption', 'freedom', 'generosity').
+2. Happiness Levels: The negative trend in happiness_difference_mean implies that, on average, people are migrating to countries that are less happier.
 
 
 
@@ -182,19 +160,6 @@ A Support Vector Machine (SVM) regression might better capture the underlying pa
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-**Subgroup Analysis: Conduct subgroup analysis based on different motivations for migration (e.g., economic reasons, family reunification, education) to understand how happiness outcomes vary across these groups.
-**
 
 
 
@@ -216,7 +181,28 @@ A Support Vector Machine (SVM) regression might better capture the underlying pa
 # Q2: How does an influx of migrants impact the happiness score of the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
 For this research question, supervised machine learning will be used to build a regression model. We will use migration-related features, such as the number of migrants, economic impact, unemployment rates, and social integration programs, as independent variables to predict the happiness score of the host country in subsequent years.
 
+Sunburst Plot: Utilize a sunburst plot to visualize the migration patterns and happiness changes across destination and origin regions or sub-regions. This hierarchical visualization can reveal migration flows and happiness trends at different levels of granularity.
+
 **How can I visualize if migrants going from an original country to an another changes the happiness score in the destination?**
+
+**Relationship between Migration and Happiness**
+Looking at the happiness difference can provide insights into how migration impacts happiness at the target location. Positive values indicate that people tend to be happier in the target location compared to the source location, while negative values suggest the opposite. By examining the relationship between migration weight and happiness difference, we can gain a better understanding of how migration decisions might influence happiness outcomes.
+
+
+**a)** validate if there is a linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'), if so, we can use linear regression model.
+
+
+![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_relationshipValidation.png)
+
+The scatter plot indicates that there is a non-linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'). The high density of data points at 0, forming a straight vertical line, suggests that there is a concentration of cases where there is little or no change in happiness ('happiness_difference') despite varying 'migration_weight.' This phenomenon could be due to a specific group of individuals with similar characteristics or circumstances that experience minimal changes in happiness regardless of their migration weights.
+
+The clustering of data points horizontally between 1.5 and -2.3 indicates that there is some level of association between 'migration_weight' and 'happiness_difference,' but it is not linear. Instead, it shows that for certain values of 'migration_weight,' there are clusters of data points with similar happiness differences, suggesting a potential threshold effect or non-linear relationship.
+
+A Support Vector Machine (SVM) regression might better captur
+
+
+
+**Subgroup Analysis: Conduct subgroup analysis based on different motivations for migration (e.g., economic reasons, family reunification, education) to understand how happiness outcomes vary across these groups.**
 
 
 # Q3: Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.

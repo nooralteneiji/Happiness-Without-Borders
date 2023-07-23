@@ -53,6 +53,9 @@ Now that we understand the overarching patterns, it's logical to then focus on t
 - How does an influx of migrants impact the happiness score of the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
 
 
+**(2) Are people migrating to happier countries?**
+- Chord plot with unhapping countries with people flowing to happier ones?
+
 **(3) Happiness and Genetic Diversity:**
 After exploring the direct impact of migration on happiness, this question delves deeper into understanding if there's any inherent relationship between a country's happiness score and the genetic diversity of its population.
 - Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
@@ -71,7 +74,7 @@ Building on the knowledge of how happiness relates to genetic diversity, it's a 
 ## Analysis 
 1. **Trend Analysis**: We visualized the trend in average migration weights over time, and superimposed the trend in average happiness scores for both source and destination countries. This gives us an insight into the general global migration trend in relation to happiness.
 
-a. Before seeing if there is a statistically significant difference between the groups, we need to see if data normally distributed (since it is an assumption made by out t-test later). 
+**a)** Before seeing if there is a statistically significant difference between the the migration type and the happiness score, we need to see if data normally distributed. This step is important as it will inform us which type of non-parametric test to use.
 
 As we can see happiness scores have a bi-modal distribution and weight data is skewed to the left. 
 
@@ -81,8 +84,84 @@ As we can see happiness scores have a bi-modal distribution and weight data is s
 
 ![distribution migration](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionMigration.png)
 
+**b)** Since we do not have a normal distribution and we want to test more than two groups, we will use a Kruskal-Wallis Test.
+
+We do not need to do a test between the migration types and happiness scores since comparing them would not be meaningful.
+
+We will compare the differences in migration weights for each pair of migration types (e.g., 'inwards' vs. 'outwards', 'inwards' vs. 'transit', 'outwards' vs. 'transit') and the differences in happiness scores between 'transit' and 'happiness_source' for each year separately.
+
+The null hypothesis for the Kruskal-Wallis test is that the distributions of the two groups being compared are identical, while the null hypothesis for the Wilcoxon signed-rank test is that there is no difference between the paired samples. If the p-value is less than the significance level (<0.05), it indicates a statistically significant difference between the groups.
+
+```
+
+Year: 2005
+Kruskal-Wallis Test for outward and return:
+Test Statistic: 29.628394678865437
+P-value: 5.233268573643815e-08
+Kruskal-Wallis Test for outward and transit:
+Test Statistic: 191.06469728025542
+P-value: 1.8618039888296428e-43
+Kruskal-Wallis Test for return and transit:
+Test Statistic: 72.22907994243378
+P-value: 1.916112515471642e-17
+
+Year: 2010
+Kruskal-Wallis Test for outward and return:
+Test Statistic: 182.29414698214356
+P-value: 1.5294387114549497e-41
+Kruskal-Wallis Test for outward and transit:
+Test Statistic: 4422.160384541106
+P-value: 0.0
+Kruskal-Wallis Test for return and transit:
+Test Statistic: 3139.939709364545
+P-value: 0.0
+
+Year: 2015
+Kruskal-Wallis Test for outward and return:
+Test Statistic: 509.05857862452945
+P-value: 1.0163454967522259e-112
+Kruskal-Wallis Test for outward and transit:
+Test Statistic: 6207.037579310079
+P-value: 0.0
+Kruskal-Wallis Test for return and transit:
+Test Statistic: 3661.3571898278883
+P-value: 0.0
+```
+Based on the low p-values we reject the null hypothesis for all tests, indicating that there is a statistically significant difference in migration weights between each pair of migration types for each year. This means that the migration weights are not coming from the same distribution for all pairs of migration types and there are significant differences between them.
+
+
+**c)** Plot migration trend with error bars 
 
 ![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_globalTrend.png)
+
+
+The plot shows the trends and implications of migration weight and happiness over the years 2005, 2010, and 2015. The data is presented using two y-axes, with migration weight (transit_mean, return_mean, and outward_mean) represented on the left y-axis and happiness (happiness_source_mean and happiness_target_mean) represented on the right y-axis.
+
+Trends for Migration Weight:
+- Outward migration most popular.
+- Transit Mean: This represents the average migration over the years between two countries which individuals are not originally. It shows a decreasing trend from around 1421 in 2005 to about 534 in 2010 and then slightly increasing to approximately 559 in 2015.
+
+- Return Mean: This represents the average return migration weight over the years. It starts at around 4308 in 2005, decreases to approximately 3687 in 2010, and then continues to decline to about 3104 in 2015.
+
+- Outward Mean: This represents the average outward migration weight over the years. It starts at approximately 9571 in 2005, decreases to around 7902 in 2010, and then further declines to about 7174 in 2015.
+
+Trends for Happiness:
+- Happiness Difference Mean: Represents the average happiness difference over the years. The happiness difference is calculated as the difference between two happiness metrics (happiness_source_mean and happiness_target_mean) and is used as an indicator of the happiness change due to migration. The happiness difference seems to have a negative trend from -0.025 in 2010 to -0.023 in 2015.
+
+Implications:
+1. Migration Trends: The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
+
+2. Happiness Levels: The negative trend in happiness_difference_mean implies that, on average, people are migrating to countries that are less happier.
+
+
+
+
+
+
+
+
+
+
 
 3. **Difference in Happiness Scores**: We compared the distribution of differences in happiness scores (source - target) over time. If the distribution leans towards positive, it suggests people migrate to happier countries.
 
@@ -98,8 +177,32 @@ As we can see happiness scores have a bi-modal distribution and weight data is s
     - See if there's a spike in migration from these conflict zones.
     - Analyze the happiness score trend in these zones compared to global average.
 
+
 # Q2: How does an influx of migrants impact the happiness score of the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
 For this research question, supervised machine learning will be used to build a regression model. We will use migration-related features, such as the number of migrants, economic impact, unemployment rates, and social integration programs, as independent variables to predict the happiness score of the host country in subsequent years.
+
+Sunburst Plot: Utilize a sunburst plot to visualize the migration patterns and happiness changes across destination and origin regions or sub-regions. This hierarchical visualization can reveal migration flows and happiness trends at different levels of granularity.
+
+**How can I visualize if migrants going from an original country to an another changes the happiness score in the destination?**
+
+**Relationship between Migration and Happiness**
+Looking at the happiness difference can provide insights into how migration impacts happiness at the target location. Positive values indicate that people tend to be happier in the target location compared to the source location, while negative values suggest the opposite. By examining the relationship between migration weight and happiness difference, we can gain a better understanding of how migration decisions might influence happiness outcomes.
+
+
+**a)** validate if there is a linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'), if so, we can use linear regression model.
+
+
+![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_relationshipValidation.png)
+
+The scatter plot indicates that there is a non-linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'). The high density of data points at 0, forming a straight vertical line, suggests that there is a concentration of cases where there is little or no change in happiness ('happiness_difference') despite varying 'migration_weight.' This phenomenon could be due to a specific group of individuals with similar characteristics or circumstances that experience minimal changes in happiness regardless of their migration weights.
+
+The clustering of data points horizontally between 1.5 and -2.3 indicates that there is some level of association between 'migration_weight' and 'happiness_difference,' but it is not linear. Instead, it shows that for certain values of 'migration_weight,' there are clusters of data points with similar happiness differences, suggesting a potential threshold effect or non-linear relationship.
+
+A Support Vector Machine (SVM) regression might better captur
+
+
+
+**Subgroup Analysis: Conduct subgroup analysis based on different motivations for migration (e.g., economic reasons, family reunification, education) to understand how happiness outcomes vary across these groups.**
 
 
 # Q3: Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
@@ -116,7 +219,9 @@ This question is focused on understanding patterns in allelic frequencies among 
 
 
 
-
+# limitations 
+- Selection Bias: Migrants are a selective group, and the decision to move to a particular country may be influenced by factors that are difficult to capture in the data. For example, individuals who are more optimistic or have higher adaptability may be more likely to migrate, which can bias the results.
+- Confounding Variables: There are likely to be other variables that influence both migration decisions and happiness levels. For example, cultural factors, language, job opportunities, family support, and personal characteristics can all impact both migration choices and happiness.
 
 
 
