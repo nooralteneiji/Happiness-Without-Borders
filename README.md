@@ -52,6 +52,7 @@ Let us set the stage by providing a broad understanding of how migration pattern
 Now that we understand the overarching patterns, it's logical to then focus on the specific implications of these patterns.
 - How does an influx of migrants impact the happiness score of the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
 
+
 **(3) Happiness and Genetic Diversity:**
 After exploring the direct impact of migration on happiness, this question delves deeper into understanding if there's any inherent relationship between a country's happiness score and the genetic diversity of its population.
 - Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
@@ -67,21 +68,62 @@ Building on the knowledge of how happiness relates to genetic diversity, it's a 
 - However, flow data are essential for understanding contemporary trends in international migration and for determining relationships.
       - They used an innovative methodology to estimate bilateral flows between 196 countries from 1990 through 2010. The estimates reflect migration transitions and thus cannot be compared to annual movements flow data published by United Nations and Eurostat 2. The authors used statistical missing data methods to estimate the five-year migrant flows that are required to meet differences in migrant stock totals. For example, if the number of foreign-born in the United States increases between two time periods, they estimated the minimum migrant flows between the US and all other countries in the world that are required to meet this increase. For each country of birth, they estimated the minimum number of migrant flows required to match differences in stocks by assuming that people are more likely to stay than to move. This estimation procedure was replicated simultaneously for all 196 countries to estimate birthplace specific flow tables, resulting in a comparable set of global migration flows 3.
 
+## Analysis 
+1. **Trend Analysis**: We visualized the trend in average migration weights over time, and superimposed the trend in average happiness scores for both source and destination countries. This gives us an insight into the general global migration trend in relation to happiness.
 
 
-## Visualization 
+
+3. **Difference in Happiness Scores**: We compared the distribution of differences in happiness scores (source - target) over time. If the distribution leans towards positive, it suggests people migrate to happier countries.
+
+4. **Correlation Analysis**: Measure correlation coefficients between the difference in happiness scores and migration weights. A positive correlation might suggest that as the happiness difference increases, so does the migration weight.
+
+5. **Economic Downturns**:
+    - Identify years of global economic downturns (you might need external data for this or define it based on a decrease in average global GDP).
+    - Analyze migration patterns during these years. Do more people migrate during economic downturns?
+    - Check the relationship between happiness scores and migration during these years. Do people tend to move from countries with larger drops in GDP or happiness?
+
+6. **Regional Conflicts**:
+    - Identify major regional conflicts during the time frame (this would require external data).
+    - See if there's a spike in migration from these conflict zones.
+    - Analyze the happiness score trend in these zones compared to global average.
+
+# Q2: How does an influx of migrants impact the happiness score of the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
+For this research question, supervised machine learning will be used to build a regression model. We will use migration-related features, such as the number of migrants, economic impact, unemployment rates, and social integration programs, as independent variables to predict the happiness score of the host country in subsequent years.
+
+
+# Q3: Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
+We used a regression analysis to explore the correlation between a nation's average happiness score (dependent variable) and genetic diversity metrics (independent variables). The model was adjusted for socioeconomic factors and historical events.
+
+
+
+
+# Q4: Are there discernible patterns in allelic frequencies among countries with higher emigration rates as compared to those with lower rates?
+This question is focused on understanding patterns in allelic frequencies among countries with different emigration rates. Population genetics and statistical analyses was used for exploring the relationship between genetics and migration patterns.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Q1 Visualization 
 ### Circular migration plot 
 representing the inter-relationships between data points in a graph. The nodes are arranged radially around a circle with the relationships between the data points drawn as arcs (or chords) connecting the nodes. The number of chords is scaled by a weight (migration flow).
 This code was written based on this [source](https://holoviews.org/reference/elements/bokeh/Chord.html).
 
-![chord_diagram_country_2005](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/chord_diagram_country_2005.png)
+Country migration flow from 2010-2015.
 
-![chord_diagram_country_2005](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/chord_diagram_region_2005.png)
-
-
-
-
-
+![chord_diagram_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/chord_diagram_country.png)
 
 
 
