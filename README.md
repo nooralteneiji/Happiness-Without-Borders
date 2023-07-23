@@ -23,11 +23,17 @@
 
 `year`, `origin`, `destination`, `type` (outward, return, transit)
 
+Outward migrants move away from their country of birth. 
+
+Return migrants move to their country of birth. 
+
+Transit migrants move from and to countries, neither of which is their country of birth.
+
 3 different estimations of migration flow are in the columns: 
 - `da_min_open`(demographic accounting, open minimization method)
 - `da_min_closed` (demographic accounting, closed minimization method)
 - `da_pb_closed` (demographic accounting, pseudo baysian method)
-   - We will only this estimation since [Abel and Cohen, 2019](https://www.nature.com/articles/s41597-022-01271-z](https://www.nature.com/articles/s41597-019-0089-3)) found the Pseudo-Bayesian demographic accounting method to be the best estimation of migration flow from migrant stock data (how many migrants are residing in a country during a specific point in time) published by the World Bank and United Nations.
+   - We will only this estimation since [Abel and Cohen, 2019](https://www.nature.com/articles/s41597-022-01271-z)(https://www.nature.com/articles/s41597-019-0089-3) found the Pseudo-Bayesian demographic accounting method to be the best estimation of migration flow from migrant stock data (how many migrants are residing in a country during a specific point in time) published by the World Bank and United Nations.
 
 region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	regionflow_1990	regionflow_1995	regionflow_2000	regionflow_2005	countryflow_1990	countryflow_1995	countryflow_2000	countryflow_2005
 
@@ -68,6 +74,9 @@ Building on the knowledge of how happiness relates to genetic diversity, it's a 
 representing the inter-relationships between data points in a graph. The nodes are arranged radially around a circle with the relationships between the data points drawn as arcs (or chords) connecting the nodes. The number of chords is scaled by a weight (migration flow).
 This code was written based on this [source](https://holoviews.org/reference/elements/bokeh/Chord.html).
 
+![chord_diagram_country_2005](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/chord_diagram_country_2005.png)
+
+![chord_diagram_country_2005](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/chord_diagram_region_2005.png)
 
 
 
