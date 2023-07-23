@@ -71,7 +71,7 @@ Building on the knowledge of how happiness relates to genetic diversity, it's a 
 ## Analysis 
 1. **Trend Analysis**: We visualized the trend in average migration weights over time, and superimposed the trend in average happiness scores for both source and destination countries. This gives us an insight into the general global migration trend in relation to happiness.
 
-a. Before seeing if there is a statistically significant difference between the groups, we need to see if data normally distributed (since it is an assumption made by out t-test later). 
+**a)** Before seeing if there is a statistically significant difference between the the migration type and the happiness score, we need to see if data normally distributed. This step is important as it will inform us which type of non-parametric test to use.
 
 As we can see happiness scores have a bi-modal distribution and weight data is skewed to the left. 
 
@@ -80,6 +80,58 @@ As we can see happiness scores have a bi-modal distribution and weight data is s
 ![distribution happiness target](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionHappiness_happiness_target.png)
 
 ![distribution migration](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionMigration.png)
+
+**b)** Since we do not have a normal distribution and we want to test more than two groups, we will use a Kruskal-Wallis Test.
+
+We do not need to do a test between the migration types and happiness scores since comparing them would not be meaningful.
+
+We will compare the differences in migration weights for each pair of migration types (e.g., 'inwards' vs. 'outwards', 'inwards' vs. 'transit', 'outwards' vs. 'transit') and the differences in happiness scores between 'transit' and 'happiness_source' for each year separately.
+
+The null hypothesis for the Kruskal-Wallis test is that the distributions of the two groups being compared are identical, while the null hypothesis for the Wilcoxon signed-rank test is that there is no difference between the paired samples. If the p-value is less than the significance level (<0.05), it indicates a statistically significant difference between the groups.
+
+```
+
+Year: 2005
+Kruskal-Wallis Test for outward and return:
+Test Statistic: 29.628394678865437
+P-value: 5.233268573643815e-08
+Kruskal-Wallis Test for outward and transit:
+Test Statistic: 191.06469728025542
+P-value: 1.8618039888296428e-43
+Kruskal-Wallis Test for return and transit:
+Test Statistic: 72.22907994243378
+P-value: 1.916112515471642e-17
+
+Year: 2010
+Kruskal-Wallis Test for outward and return:
+Test Statistic: 182.29414698214356
+P-value: 1.5294387114549497e-41
+Kruskal-Wallis Test for outward and transit:
+Test Statistic: 4422.160384541106
+P-value: 0.0
+Kruskal-Wallis Test for return and transit:
+Test Statistic: 3139.939709364545
+P-value: 0.0
+
+Year: 2015
+Kruskal-Wallis Test for outward and return:
+Test Statistic: 509.05857862452945
+P-value: 1.0163454967522259e-112
+Kruskal-Wallis Test for outward and transit:
+Test Statistic: 6207.037579310079
+P-value: 0.0
+Kruskal-Wallis Test for return and transit:
+Test Statistic: 3661.3571898278883
+P-value: 0.0
+```
+Based on the low p-values we reject the null hypothesis for all tests, indicating that there is a statistically significant difference in migration weights between each pair of migration types for each year. This means that the migration weights are not coming from the same distribution for all pairs of migration types and there are significant differences between them.
+
+
+**c)** Plot migration trend with error bars 
+
+
+SPECIFY MIGRATION BY REGION???????????????
+
 
 
 ![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_globalTrend.png)
@@ -100,6 +152,8 @@ As we can see happiness scores have a bi-modal distribution and weight data is s
 
 # Q2: How does an influx of migrants impact the happiness score of the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
 For this research question, supervised machine learning will be used to build a regression model. We will use migration-related features, such as the number of migrants, economic impact, unemployment rates, and social integration programs, as independent variables to predict the happiness score of the host country in subsequent years.
+
+**How can I visualize if migrants going from an original country to an another changes the happiness score in the destination?**
 
 
 # Q3: Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
