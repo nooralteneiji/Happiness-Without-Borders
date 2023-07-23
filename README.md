@@ -167,6 +167,8 @@ Chord graph!!!
 **Migrating to less attacks?**
 
 
+### migration hotspots 
+(world map)
 
 # Q2: Decoding the decision to migrate
 By controlling for GDP, we are essentially examining how migration trends change when the influence of economic conditions is held constant. This can help reveal whether migration patterns are driven primarily by economic factors or if other variables play a more significant role.
