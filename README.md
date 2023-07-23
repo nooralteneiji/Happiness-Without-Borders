@@ -71,7 +71,7 @@ Building on the knowledge of how happiness relates to genetic diversity, it's a 
 ## Analysis 
 1. **Trend Analysis**: We visualized the trend in average migration weights over time, and superimposed the trend in average happiness scores for both source and destination countries. This gives us an insight into the general global migration trend in relation to happiness.
 
-![Trend in Average Migration Weight and Happiness Scores Over Time](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_adjustedGlobalTrend.png)
+![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_globalTrend.png)
 
 3. **Difference in Happiness Scores**: We compared the distribution of differences in happiness scores (source - target) over time. If the distribution leans towards positive, it suggests people migrate to happier countries.
 
@@ -123,7 +123,7 @@ This code was written based on this [source](https://holoviews.org/reference/ele
 
 Country migration flow from 2010-2015.
 
-![chord_diagram_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_globalTrend.png)
+![chord_diagram_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/chord_diagram_country.png)
 
 
 
