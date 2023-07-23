@@ -130,10 +130,6 @@ Based on the low p-values we reject the null hypothesis for all tests, indicatin
 **c)** Plot migration trend with error bars 
 
 
-SPECIFY MIGRATION BY REGION???????????????
-
-
-
 ![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_globalTrend.png)
 
 3. **Difference in Happiness Scores**: We compared the distribution of differences in happiness scores (source - target) over time. If the distribution leans towards positive, it suggests people migrate to happier countries.
