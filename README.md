@@ -127,27 +127,10 @@ Implications:
 
 ### Chord graph: Which regions are people migrating to? 
 
-**all years**   
-
-
-**2005**
-
-**2010**
-
-**2015**
 
 ### Chord graph: Which sub-regions are people migrating to? 
 
 !! seperate graph for outward and return
-
-**all years**   
-
-
-**2005**
-
-**2010**
-
-**2015**
 
 
 ### Are people migrating to better countries?
