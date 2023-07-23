@@ -37,6 +37,13 @@ Transit migrants move from and to countries, neither of which is their country o
 
 region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	regionflow_1990	regionflow_1995	regionflow_2000	regionflow_2005	countryflow_1990	countryflow_1995	countryflow_2000	countryflow_2005
 
+**Why was this dataset was choosen and not UN/World Bank data?**
+- Widely available data on the number of people living outside of their country of birth do not adequately capture contemporary intensities and patterns of global migration flows[(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
+- Stock data, measured at a given point in time as the number of people living in a country other than the one in which they were born, are more widely available and far easier to measure across countries than are flow data capturing movements over a period of time [(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
+- However, flow data are essential for understanding contemporary trends in international migration and for determining relationships.
+      - They used an innovative methodology to estimate bilateral flows between 196 countries from 1990 through 2010. The estimates reflect migration transitions and thus cannot be compared to annual movements flow data published by United Nations and Eurostat 2. The authors used statistical missing data methods to estimate the five-year migrant flows that are required to meet differences in migrant stock totals. For example, if the number of foreign-born in the United States increases between two time periods, they estimated the minimum migrant flows between the US and all other countries in the world that are required to meet this increase. For each country of birth, they estimated the minimum number of migrant flows required to match differences in stocks by assuming that people are more likely to stay than to move. This estimation procedure was replicated simultaneously for all 196 countries to estimate birthplace specific flow tables, resulting in a comparable set of global migration flows 3.
+
+
 [UCDP Georeferenced Event Dataset](https://ucdp.uu.se/downloads/index.html#ged_global)
 
 *Countries with less immigrants, more genetically pure?*
@@ -48,43 +55,41 @@ Let us set the stage by providing a broad understanding of how migration pattern
    - How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
    - Factor in global events: economic downturns (decrease in GDP) and conflicts 
     
-**(2) Migration Effects on Host Country Happiness:**
+    
+    
+    
+    
+---    
+(2) Migration Effects on Host Country :
 Now that we understand the overarching patterns, it's logical to then focus on the specific implications of these patterns.
-- How does an influx of migrants impact the happiness score of the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
+- How does an influx of migrants impact the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
 
-
-**(2) Are people migrating to happier countries?**
+(2) Are people migrating to happier countries?
 - Chord plot with unhapping countries with people flowing to happier ones?
 
-**(3) Happiness and Genetic Diversity:**
+(3) Happiness and Genetic Diversity:
 After exploring the direct impact of migration on happiness, this question delves deeper into understanding if there's any inherent relationship between a country's happiness score and the genetic diversity of its population.
 - Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
 
-**(4) Genetics and Migration:**
+(4) Genetics and Migration:
 Building on the knowledge of how happiness relates to genetic diversity, it's a fitting progression to then explore how genetic factors might influence or be influenced by migration patterns.
 - Are there discernible patterns in allelic frequencies among countries with higher emigration rates as compared to those with lower rates? Consider adjusting for shared historical migrations or neighboring country influence.
 
-# Q1: How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
-## Data preprocesssing
-- Widely available data on the number of people living outside of their country of birth do not adequately capture contemporary intensities and patterns of global migration flows[(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
-- Stock data, measured at a given point in time as the number of people living in a country other than the one in which they were born, are more widely available and far easier to measure across countries than are flow data capturing movements over a period of time [(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
-- However, flow data are essential for understanding contemporary trends in international migration and for determining relationships.
-      - They used an innovative methodology to estimate bilateral flows between 196 countries from 1990 through 2010. The estimates reflect migration transitions and thus cannot be compared to annual movements flow data published by United Nations and Eurostat 2. The authors used statistical missing data methods to estimate the five-year migrant flows that are required to meet differences in migrant stock totals. For example, if the number of foreign-born in the United States increases between two time periods, they estimated the minimum migrant flows between the US and all other countries in the world that are required to meet this increase. For each country of birth, they estimated the minimum number of migrant flows required to match differences in stocks by assuming that people are more likely to stay than to move. This estimation procedure was replicated simultaneously for all 196 countries to estimate birthplace specific flow tables, resulting in a comparable set of global migration flows 3.
+---
 
-## Analysis 
-1. **Trend Analysis**: We visualized the trend in average migration weights over time, and superimposed the trend in average happiness scores for both source and destination countries. This gives us an insight into the general global migration trend in relation to happiness.
+# Q1: How have migration patterns changed over time of both source and destination countries?
 
-**a)** Before seeing if there is a statistically significant difference between the the migration type and the happiness score, we need to see if data normally distributed. This step is important as it will inform us which type of non-parametric test to use.
+## Trend analysis 
+### Check distribution 
+Before seeing if there is a statistically significant difference between the the migration types, we need to see if data normally distributed. This step is important as it will inform us which type of non-parametric test to use.
 
-As we can see happiness scores have a bi-modal distribution and weight data is skewed to the left. 
-
-![distribution happiness source](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionHappiness_happiness_source.png)
-
-![distribution happiness target](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionHappiness_happiness_target.png)
+As we can see, migration data is skewed to the left. 
 
 ![distribution migration](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_distributionMigration.png)
 
-**b)** Since we do not have a normal distribution and we want to test more than two groups, we will use a Kruskal-Wallis Test.
+
+### Check if significant deifferences between migration type 
+Since we do not have a normal distribution and we want to test more than two groups, we will use a Kruskal-Wallis Test.
 
 We do not need to do a test between the migration types and happiness scores since comparing them would not be meaningful.
 
@@ -92,48 +97,12 @@ We will compare the differences in migration weights for each pair of migration 
 
 The null hypothesis for the Kruskal-Wallis test is that the distributions of the two groups being compared are identical, while the null hypothesis for the Wilcoxon signed-rank test is that there is no difference between the paired samples. If the p-value is less than the significance level (<0.05), it indicates a statistically significant difference between the groups.
 
-```
-
-Year: 2005
-Kruskal-Wallis Test for outward and return:
-Test Statistic: 29.628394678865437
-P-value: 5.233268573643815e-08
-Kruskal-Wallis Test for outward and transit:
-Test Statistic: 191.06469728025542
-P-value: 1.8618039888296428e-43
-Kruskal-Wallis Test for return and transit:
-Test Statistic: 72.22907994243378
-P-value: 1.916112515471642e-17
-
-Year: 2010
-Kruskal-Wallis Test for outward and return:
-Test Statistic: 182.29414698214356
-P-value: 1.5294387114549497e-41
-Kruskal-Wallis Test for outward and transit:
-Test Statistic: 4422.160384541106
-P-value: 0.0
-Kruskal-Wallis Test for return and transit:
-Test Statistic: 3139.939709364545
-P-value: 0.0
-
-Year: 2015
-Kruskal-Wallis Test for outward and return:
-Test Statistic: 509.05857862452945
-P-value: 1.0163454967522259e-112
-Kruskal-Wallis Test for outward and transit:
-Test Statistic: 6207.037579310079
-P-value: 0.0
-Kruskal-Wallis Test for return and transit:
-Test Statistic: 3661.3571898278883
-P-value: 0.0
-```
 Based on the low p-values we reject the null hypothesis for all tests, indicating that there is a statistically significant difference in migration weights between each pair of migration types for each year. This means that the migration weights are not coming from the same distribution for all pairs of migration types and there are significant differences between them.
 
 
-**c)** Plot migration trend with error bars 
+### Line graph: Viusalize migration trends as a function of time
 
 ![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_globalTrend.png)
-
 
 The plot shows the trends and implications of migration weight and happiness over the years 2005, 2010, and 2015. The data is presented using two y-axes, with migration weight (transit_mean, return_mean, and outward_mean) represented on the left y-axis and happiness (happiness_source_mean and happiness_target_mean) represented on the right y-axis.
 
@@ -152,6 +121,85 @@ Implications:
 1. Migration Trends: The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
 
 2. Happiness Levels: The negative trend in happiness_difference_mean implies that, on average, people are migrating to countries that are less happier.
+
+### Chord graph: Which countries are people migrating to? 
+
+![chord_diagram_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/chord_diagram_country.png)
+
+### Chord graph: Which regions are people migrating to? 
+
+**all years**   
+
+
+**2005**
+
+**2010**
+
+**2015**
+
+### Chord graph: Which sub-regions are people migrating to? 
+
+**all years**   
+
+
+**2005**
+
+**2010**
+
+**2015**
+
+
+### Are people migrating to better countries?
+
+Chord graph!!!
+
+**Migrating to happier countries?** 
+
+**Migratingn to better GDP?**
+
+**Migrating to better life expectancy?**
+
+**Migrating to less corruption?**
+
+**Migrating to more freedom?**
+
+**Migrating to less attacks?**
+
+
+
+# Q2: Decoding the decision to migrate
+By controlling for GDP, we are essentially examining how migration trends change when the influence of economic conditions is held constant. This can help reveal whether migration patterns are driven primarily by economic factors or if other variables play a more significant role.
+
+
+
+
+
+
+
+# Q3:How does an influx of migrants impact the host country in subsequent years?
+- what do I need to adjust for?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Archive
+---
+# Q1: How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
+## Data preprocesssing
+
+
 
 
 
@@ -237,9 +285,6 @@ This question is focused on understanding patterns in allelic frequencies among 
 representing the inter-relationships between data points in a graph. The nodes are arranged radially around a circle with the relationships between the data points drawn as arcs (or chords) connecting the nodes. The number of chords is scaled by a weight (migration flow).
 This code was written based on this [source](https://holoviews.org/reference/elements/bokeh/Chord.html).
 
-Country migration flow from 2010-2015.
-
-![chord_diagram_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/chord_diagram_country.png)
 
 
 
