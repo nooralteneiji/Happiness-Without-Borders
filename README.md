@@ -76,7 +76,7 @@ Building on the knowledge of how happiness relates to genetic diversity, it's a 
 
 ---
 
-# Q1: How have migration patterns changed over time of both source and destination countries?
+# Q1: What are the migration patterns?
 
 ## Trend analysis 
 ### Check distribution 
@@ -123,58 +123,110 @@ Implications:
 
 ### Which countries are people migrating to? 
 
+*The chord graph code was written based on this [source](https://holoviews.org/reference/elements/bokeh/Chord.html).*
 
-**Overall movement**
+**Overall routes**
 
 ![chord_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_country.png)
 
+
+
+!!!!!!!!!!!!!! show flow between top 50 countries that send and recieve at least 0.5% of world's migrants!!!!!!!!!!!
+
 **Which countries are most people migrating to?**
 
-*HOW TO READ THE GRAPH: If you click on a node, it represents the destination country, so all chords coming from other countries indicate where the people are migrating from to reach the destination country.*
+*HOW TO READ THE GRAPH: Look at the largest nodes. They represent the destination country, so all chords coming from other countries indicate where the people are migrating from to reach the destination country.*
 
 People are migrating to the UK, US, UAE, Canada, Austrailia, Germany, Russia, Saudia Arabia, Italy and Spain.
 
-![country toward](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_topCountryToward.png)
+![country toward](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_chord_diagram_topCountryToward.png)
 
 **Which countries are most people migrating away from?**
 
-*HOW TO READ THE GRAPH: If you click on a node, it represents the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
+*HOW TO READ THE GRAPH:Look at the largest nodes. They represent  the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
 
 People are migrating away from Mexico, India, China, Bangladesh, Pakistan, Russia, Saudia Arabia, Syria, US, UK, Germany.
 
 ![country away](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_topCountryAway.png)
 
-### Which regions are people migrating to? 
+### Which regions are people migrating away from? 
 
-*HOW TO READ THE GRAPH: If you click on a node, it represents the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
+*HOW TO READ THE GRAPH: Look at the largest nodes. They represent the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
 
 ![region](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_Region.png)  
 
-### Which sub-regions are people migrating to? 
+### Which sub-regions are people migrating away from? 
 
-*HOW TO READ THE GRAPH: If you click on a node, it represents the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
+*HOW TO READ THE GRAPH: Look at the largest nodes. They represent the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
 
 ![chord_subregion](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_subRegion.png)
 
-### Are people migrating to better countries?
 
-Chord graph!!!
+# Q2: What are the migration patterns with respect to country qualities?
 
-**Migrating to happier countries?** 
 
-**Migratingn to better GDP?**
-
-**Migrating to better life expectancy?**
-
-**Migrating to less corruption?**
-
-**Migrating to more freedom?**
-
-**Migrating to less attacks?**
+## Are people migrating to better countries?
 
 
 
-# Q2: Decoding the decision to migrate
+### Migrating to happier countries? 
+
+### Migratingn to better GDP?
+
+### Migrating to better life expectancy?
+
+### Migrating to less corruption?
+
+### Migrating to more freedom?
+
+### Migrating to less attacks?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Q3: Decoding the decision to migrate
 By controlling for GDP, we are essentially examining how migration trends change when the influence of economic conditions is held constant. This can help reveal whether migration patterns are driven primarily by economic factors or if other variables play a more significant role.
 
 
@@ -183,7 +235,7 @@ By controlling for GDP, we are essentially examining how migration trends change
 
 
 
-# Q3:How does an influx of migrants impact the host country in subsequent years?
+# Q4:How does an influx of migrants impact the host country in subsequent years?
 - what do I need to adjust for?
 
 
