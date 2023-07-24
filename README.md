@@ -121,16 +121,24 @@ Implications:
 
 2. Happiness Levels: The negative trend in happiness_difference_mean implies that, on average, people are migrating to countries that are less happier.
 
-### Chord graph: Which countries are people migrating to? 
+### Which countries are people migrating to? 
+**HOW TO READ THE GRAPH: If you click on a node, it represents the destination country, so all chords coming from other countries indicate where the people are migrating from to reach the destination country.**
+
+**Overall movement**
 
 ![chord_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_country.png)
 
-### Chord graph: Which regions are people migrating to? 
+**Which countries are most people migrating to?**
+
+
+**Which countries are most people migrating away from?**
+
+### Which regions are people migrating to? 
 In the interactive version in the Notebook, pressing on a node highlights the direction people are migrating towards.
 
 ![region](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_Region.png)  
 
-### Chord graph: Which sub-regions are people migrating to? 
+### Which sub-regions are people migrating to? 
 
 ![chord_subregion](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_subRegion.png)
 
