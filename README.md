@@ -121,14 +121,15 @@ Implications:
 
 2. Happiness Levels: The negative trend in happiness_difference_mean implies that, on average, people are migrating to countries that are less happier.
 
-### Which countries are people migrating to? 
+### Which countries are people migrating to? [REMOVE INSIGNIFICANT COUNTRIES W OVERLAPPING LABELS]
+
+**WE ARE ONLY LOOKING AT countries that send and recieve at least 0.5% of world's migrants**
 
 *The chord graph code was written based on this [source](https://holoviews.org/reference/elements/bokeh/Chord.html).*
 
 **Overall routes**
 
-![chord_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_country.png)
-
+![chord_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q1_chord_diagram_countryRoute.png)
 
 
 !!!!!!!!!!!!!! show flow between top 50 countries that send and recieve at least 0.5% of world's migrants!!!!!!!!!!!
@@ -147,7 +148,7 @@ People are migrating to the UK, US, UAE, Canada, Austrailia, Germany, Russia, Sa
 
 People are migrating away from Mexico, India, China, Bangladesh, Pakistan, Russia, Saudia Arabia, Syria, US, UK, Germany.
 
-![country away](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_topCountryAway.png)
+![country away](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q1_chord_diagram_topCountryAway.png)
 
 ### Which regions are people migrating away from? 
 
@@ -168,8 +169,17 @@ People are migrating away from Mexico, India, China, Bangladesh, Pakistan, Russi
 ## Are people migrating to better countries?
 
 
+**HEATMAP!**
 
 ### Migrating to happier countries? 
+
+**Movinge to happier country?**
+
+![happier](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_chord_diagram_happier.png.png)
+
+**Movinge to less happy country?**
+
+![less happy](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_chord_diagram_lessHappy.png)
 
 ### Migratingn to better GDP?
 
