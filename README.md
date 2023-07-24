@@ -130,24 +130,16 @@ Implications:
 **all years**   
 
 
-**2005**
 
-**2010**
-
-**2015**
 
 ### Chord graph: Which sub-regions are people migrating to? 
 
 !! seperate graph for outward and return
 
-**all years**   
+[chord_subregion](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_subRegion.png)
 
 
-**2005**
 
-**2010**
-
-**2015**
 
 
 ### Are people migrating to better countries?
