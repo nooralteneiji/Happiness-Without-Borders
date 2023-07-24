@@ -129,21 +129,30 @@ Implications:
 ![chord_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_country.png)
 
 **Which countries are most people migrating to?**
+
 *HOW TO READ THE GRAPH: If you click on a node, it represents the destination country, so all chords coming from other countries indicate where the people are migrating from to reach the destination country.*
+
+People are migrating to the UK, US, UAE, Canada, Austrailia, Germany, Russia, Saudia Arabia, Italy and Spain.
 
 ![country toward](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_topCountryToward.png)
 
 **Which countries are most people migrating away from?**
+
 *HOW TO READ THE GRAPH: If you click on a node, it represents the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
+
+People are migrating away from Mexico, India, China, Bangladesh, Pakistan, Russia, Saudia Arabia, Syria, US, UK, Germany.
 
 ![country away](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_topCountryAway.png)
 
 ### Which regions are people migrating to? 
-In the interactive version in the Notebook, pressing on a node highlights the direction people are migrating towards.
+
+*HOW TO READ THE GRAPH: If you click on a node, it represents the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
 
 ![region](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_Region.png)  
 
 ### Which sub-regions are people migrating to? 
+
+*HOW TO READ THE GRAPH: If you click on a node, it represents the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
 
 ![chord_subregion](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_subRegion.png)
 
