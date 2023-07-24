@@ -175,7 +175,7 @@ People are migrating away from Mexico, India, China, Bangladesh, Pakistan, Russi
 
 **Movinge to happier country?**
 
-![happier](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_chord_diagram_happier.png.png)
+![happier](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_chord_diagram_happier.png)
 
 **Movinge to less happy country?**
 
