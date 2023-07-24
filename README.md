@@ -131,7 +131,7 @@ Implications:
 **Which countries are most people migrating to?**
 *HOW TO READ THE GRAPH: If you click on a node, it represents the destination country, so all chords coming from other countries indicate where the people are migrating from to reach the destination country.*
 
-![]()
+![country toward](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_topCountryToward.png)
 
 **Which countries are most people migrating away from?**
 *HOW TO READ THE GRAPH: If you click on a node, it represents the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
