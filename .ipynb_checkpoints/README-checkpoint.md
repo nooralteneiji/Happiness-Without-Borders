@@ -123,24 +123,16 @@ Implications:
 
 ### Chord graph: Which countries are people migrating to? 
 
-![chord_diagram_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/chord_diagram_country.png)
+![chord_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_country.png)
 
 ### Chord graph: Which regions are people migrating to? 
+In the interactive version in the Notebook, pressing on a node highlights the direction people are migrating towards.
 
-**all years**   
-
-
-
+![region](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_Region.png)  
 
 ### Chord graph: Which sub-regions are people migrating to? 
 
-Pressing on a node highlights the direction people are migrating towards.
-
 ![chord_subregion](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_subRegion.png)
-
-
-
-
 
 ### Are people migrating to better countries?
 
