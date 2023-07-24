@@ -168,8 +168,10 @@ People are migrating away from Mexico, India, China, Bangladesh, Pakistan, Russi
 
 ## Are people migrating to better countries?
 
+A handful of countries in the African continent expirence a better happiness score once they migrate and arrive at the destination country.
 
-**HEATMAP!**
+![world heatmap](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_WorldHappinessMap.png)
+
 
 ### Migrating to happier countries? 
 
