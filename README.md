@@ -134,9 +134,9 @@ Implications:
 
 ### Chord graph: Which sub-regions are people migrating to? 
 
-!! seperate graph for outward and return
+Pressing on a node highlights the direction people are migrating towards.
 
-[chord_subregion](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_subRegion.png)
+![chord_subregion](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_subRegion.png)
 
 
 
