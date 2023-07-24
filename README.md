@@ -50,13 +50,15 @@ region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	
 
 
 # Overview of Research Questions
-**(1) Temporal Trends in Happiness and Migration:**
+**(1) Trends in Migration:**
 Let us set the stage by providing a broad understanding of how migration patterns and happiness scores have shifted over time. Recognizing the trends at a macro level can form the foundation for more specific exploration later on.
    - How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
     
     
-    
-    
+**(2) Trends in Migration and Country Characteristics**
+
+**(3) What are the predictors of migration?**
+- What influences the decision to migrate?    
     
 ---    
 (2) Migration Effects on Host Country :
@@ -113,13 +115,9 @@ Trends for Migration Weight:
 
 - Outward Mean: This represents the average outward migration weight over the years. It starts at approximately 9571 in 2005, decreases to around 7902 in 2010, and then further declines to about 7174 in 2015.
 
-Trends for Happiness:
-- Happiness Difference Mean: Represents the average happiness difference over the years. The happiness difference is calculated as the difference between two happiness metrics (happiness_source_mean and happiness_target_mean) and is used as an indicator of the happiness change due to migration. The happiness difference seems to have a negative trend from -0.025 in 2010 to -0.023 in 2015.
-
 Implications:
-1. Migration Trends: The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
+The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
 
-2. Happiness Levels: The negative trend in happiness_difference_mean implies that, on average, people are migrating to countries that are less happier.
 
 ### Which countries are people migrating to? [REMOVE INSIGNIFICANT COUNTRIES W OVERLAPPING LABELS]
 
@@ -197,15 +195,49 @@ A handful of countries in the African continent expirence a better happiness sco
 ---
 
 # Q3: Decoding the decision to migrate
-By controlling for GDP, we are essentially examining how migration trends change when the influence of economic conditions is held constant. This can help reveal whether migration patterns are driven primarily by economic factors or if other variables play a more significant role.
+Migration is a multifaceted phenomenon driven by a combination of economic, social, political, and environmental factors. The decision to migrate can be based on push factors (negative conditions encouraging or forcing individuals to leave a place) and pull factors (attractive conditions luring individuals to a new place).
+
+The factors we will examine as drivers of migration:
+
+1. **Economic Factors**: 
+    - `GDP_source` and `GDP_target`: A disparity in GDP between the source and target countries can be a major driver for migration. Higher GDP in the target country might indicate better job opportunities and living standards.
+
+2. **Social Factors**:
+    - `socialSupport_source` and `socialSupport_target`: A lack of social support in the source country or better social support systems in the target country can motivate individuals to migrate.
+
+3. **Quality of Life Factors**:
+    - `happiness_source` and `happiness_target`: The happiness index can be a proxy for overall quality of life, with higher scores in the target country potentially drawing migrants.
+    - `lifeExpectancy_source` and `lifeExpectancy_target`: A higher life expectancy in the target country can indicate better healthcare, sanitation, and overall living conditions.
+
+4. **Political or Civic Freedoms**:
+    - `freedom_source` and `freedom_target`: People might migrate from countries with low civic freedoms to ones with higher freedoms.
+    - `corruption_source` and `corruption_target`: High corruption levels can be a push factor driving people away from the source country.
+
+5. **Cultural or Social Values**:
+    - `generosity_source` and `generosity_target`: Differences in generosity levels might reflect cultural and societal values, which can influence migration patterns to some extent.
+
+6. **Differences in Indicators**: 
+    - `GDP_difference`, `happiness_difference`: These difference variables can provide a clearer picture of disparities between countries that might drive migration.
+
+To explore the factors that drive migration, we will employ a regression analyses, with the migration volume (`weight`, `total_weight`, or `percentage_weight`) as the dependent variable and the factors mentioned above as independent variables.
+
+Regarding the UCDP Georeferenced Event Dataset, it could be particularly relevant if you're exploring the effects of conflict or violence as a push factor for migration. You might need to aggregate the violence data by source country-year and create variables that represent:
+- Total number of violent events in the source country for a given year
+- Intensity of the violence (e.g., number of casualties)
+- Type of violence (e.g., inter-state conflict, intra-state conflict, one-sided violence)
+
+Finally, for control variables, you should consider:
+- Geographic factors (`sourceRegion`, `sourceSubRegion`, `targetRegion`, `targetSubRegion`): Because proximity and shared borders can be significant determinants of migration.
+- Time (`year`): To account for temporal trends or specific global events.
+
+Remember, while the above points give a broad overview, migration is complex. The significance of each factor can vary depending on the context, specific countries or regions, and time periods in question.
 
 
+for control variables:
 
+Geographic factors (sourceRegion, sourceSubRegion, targetRegion, targetSubRegion): Because proximity and shared borders can be significant determinants of migration.
 
-
-
-
-
+Time (year): To account for temporal trends or specific global events.
 
 
 
