@@ -53,7 +53,6 @@ region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	
 **(1) Temporal Trends in Happiness and Migration:**
 Let us set the stage by providing a broad understanding of how migration patterns and happiness scores have shifted over time. Recognizing the trends at a macro level can form the foundation for more specific exploration later on.
    - How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
-   - Factor in global events: economic downturns (decrease in GDP) and conflicts 
     
     
     
@@ -138,6 +137,8 @@ Implications:
 **2015**
 
 ### Chord graph: Which sub-regions are people migrating to? 
+
+!! seperate graph for outward and return
 
 **all years**   
 
@@ -238,9 +239,6 @@ Looking at the happiness difference can provide insights into how migration impa
 
 
 **a)** validate if there is a linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'), if so, we can use linear regression model.
-
-
-![globaltrend](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q1_relationshipValidation.png)
 
 The scatter plot indicates that there is a non-linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'). The high density of data points at 0, forming a straight vertical line, suggests that there is a concentration of cases where there is little or no change in happiness ('happiness_difference') despite varying 'migration_weight.' This phenomenon could be due to a specific group of individuals with similar characteristics or circumstances that experience minimal changes in happiness regardless of their migration weights.
 
