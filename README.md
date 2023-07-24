@@ -183,63 +183,26 @@ A handful of countries in the African continent expirence a better happiness sco
 
 ![less happy](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_chord_diagram_lessHappy.png)
 
-### Migratingn to better GDP?
 
-### Migrating to better life expectancy?
+### Migrating to better GDP?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-### Migrating to less corruption?
+### Migrating to better life expectancy?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-### Migrating to more freedom?
+### Migrating to less corruption?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-### Migrating to less attacks?
+### Migrating to more freedom?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+### Migrating to less attacks?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 # Q3: Decoding the decision to migrate
 By controlling for GDP, we are essentially examining how migration trends change when the influence of economic conditions is held constant. This can help reveal whether migration patterns are driven primarily by economic factors or if other variables play a more significant role.
+
+
+
+
+
 
 
 
