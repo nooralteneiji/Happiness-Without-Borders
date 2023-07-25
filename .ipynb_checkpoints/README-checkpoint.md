@@ -197,6 +197,8 @@ A handful of countries in the African continent expirence a better happiness sco
 # Q3: Decoding the decision to migrate
 Migration is a multifaceted phenomenon driven by a combination of economic, social, political, and environmental factors. The decision to migrate can be based on push factors (negative conditions encouraging or forcing individuals to leave a place) and pull factors (attractive conditions luring individuals to a new place).
 
+We want to predict the percentage_weight of migration between countries.
+
 The factors we will examine as drivers of migration:
 
 - Economic Factors (GDP)
@@ -260,11 +262,15 @@ The factors we will examine as drivers of migration:
       - `target`
       - `targetRegion`
       - `targetSubRegion`
-      - `happiness_category` (since it is not ordinal)
-     
+      - `happiness_category` (ordinal encoding since it has a ranking)
+      
    - **Handle Missing Data**: Ensure that there's no missing data. 
 
    - **Feature Scaling**:  RF isn't as sensitive to different scales (unlike SVM), and we do not plan to use other algorithms for comparison--so we will skip this step.
+   
+   - **Split into X and y**: We are trying to understand the relative impact of migration and want to compare across countries/regions of different sizes, so we will use `percentage_weight` rather than `weight`. This is becuase it accounts for the size of the population, making it possible to compare migration rates between large and small countries/regions on an equal footing. Additionally, it can give a clearer picture of the actual impact or significance of migration relative to the source population.
+   
+   - **Split into training and test set**
 
 2. **Hyperparameter Tuning**:
 
@@ -284,7 +290,11 @@ The factors we will examine as drivers of migration:
 
 5. **Visualization**:
 
+   - **Feature importance**: to understand which variables are most influential. 
+   
    - **Tree Visualization**: Although visualizing all trees might be overwhelming, we will visualize some individual trees to understand the decision-making process.
+   
+   - **Partial Dependence Plots:**  visualize the relationship between predictors and the target variable, taking into account the average effect of all other variables.
    
    - **Plotting Predictions vs. Actuals**: This can give us insights into where our model might be under or over-predicting.
    
@@ -295,7 +305,9 @@ The factors we will examine as drivers of migration:
    - **Clusters of Poor Predictions**: We will look at clusters where model predictions fail. This will be done by analyzing the residuals (difference between actual and predicted values) and clustering them, for example, using k-means or DBSCAN.
    
    - **Explore Clusters**: After identifying clusters with poor predictive power, we explore these clusters to see if there's a commonality among them. Perhaps there's a specific region or time period where the model struggles. We will use exploratory data analysis techniques, like distributions, scatter plots, and summary statistics.
-
+    - Cluster the data based on residuals (e.g., using K-means clustering).
+    - Analyze the characteristics of each cluster. Are there common features in these mis-predicted instances?
+    - We will use SHAP (SHapley Additive exPlanations) or LIME (Local Interpretable Model-agnostic Explanations) to understand why the model made certain predictions.
 
 Implementing this methodology will give us a thorough analysis of our dataset using Random Forest. We will have a well-tuned model, insights into the most important features and their interactions, and a deep understanding of where the model performs well and where it struggles.
 
@@ -371,18 +383,6 @@ A Support Vector Machine (SVM) regression might better captur
 
 
 
-**Subgroup Analysis: Conduct subgroup analysis based on different motivations for migration (e.g., economic reasons, family reunification, education) to understand how happiness outcomes vary across these groups.**
-
-
-# Q3: Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
-We used a regression analysis to explore the correlation between a nation's average happiness score (dependent variable) and genetic diversity metrics (independent variables). The model was adjusted for socioeconomic factors and historical events.
-
-
-
-
-# Q4: Are there discernible patterns in allelic frequencies among countries with higher emigration rates as compared to those with lower rates?
-This question is focused on understanding patterns in allelic frequencies among countries with different emigration rates. Population genetics and statistical analyses was used for exploring the relationship between genetics and migration patterns.
-
 
 
 
@@ -392,6 +392,13 @@ This question is focused on understanding patterns in allelic frequencies among 
 - Selection Bias: Migrants are a selective group, and the decision to move to a particular country may be influenced by factors that are difficult to capture in the data. For example, individuals who are more optimistic or have higher adaptability may be more likely to migrate, which can bias the results.
 - Confounding Variables: There are likely to be other variables that influence both migration decisions and happiness levels. For example, cultural factors, language, job opportunities, family support, and personal characteristics can all impact both migration choices and happiness.
 
+
+# Future directions 
+- Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
+We used a regression analysis to explore the correlation between a nation's average happiness score (dependent variable) and genetic diversity metrics (independent variables). The model was adjusted for socioeconomic factors and historical events.
+
+- Are there discernible patterns in allelic frequencies among countries with higher emigration rates as compared to those with lower rates?
+This question is focused on understanding patterns in allelic frequencies among countries with different emigration rates. Population genetics and statistical analyses was used for exploring the relationship between genetics and migration patterns.
 
 
 
