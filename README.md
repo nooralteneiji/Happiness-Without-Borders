@@ -264,7 +264,7 @@ The factors we will examine as drivers of migration:
 **Why?** Was proven to have second highest accuracy when compared to other supervised machine learning models [(Kaur et al., 2019)](https://www.mdpi.com/2076-3417/9/8/1613).
 
 
-1. **Data Preprocessing**:
+### Data Preprocessing
    
    - **Encode Categorical Variables**: RF can handle categorical data, but scikit-learn prefers numerical data. So, from our dataframe `violenceHappinessMigration_df`, we will encode:
       - `source`
@@ -283,11 +283,11 @@ The factors we will examine as drivers of migration:
    
    - **Split into training and test set**: where 30% of the data is reserved for testing, and the rest (70%) is used for training.
 
-2. **Hyperparameter Tuning**:
+### Hyperparameter Tuning
 
    - We used Grid Search with Cross-Validation to find optimal hyperparameters (e.g., number of trees, max depth of trees, min samples split).
 
-3. **Model Training and Validation**:
+### Model Training and Validation
 
    - **K-Fold Cross Validation**: Implemented 10-fold validation to ensure that our model's performance is consistent across different partitions of your data.
    
@@ -318,7 +318,7 @@ This score is the average of the MSEs from each of the 10 different train-test s
 This average MSE provides a more generalized assessment of the model's performance. The variability indicates how much the performance might change based on different data splits.
 
    
-   - **Model Performance**: Mean Absolute Error (MAE), Mean Squared Error (MSE), R^2.
+### Model Performance**: Mean Absolute Error (MAE), Mean Squared Error (MSE), R^2.
    
 
 Overview of the model's performance:
@@ -349,25 +349,15 @@ R^2 = `0.9808`
 
 The Random Forest model has shown a very high R^2 score and relatively low error metrics, indicating that it performs well on the test set. The high R^2 score suggests that the features we have selected are very predictive of migration patterns (AKA percentage_weight). 
 
-4. **Model Interpretation**:
+### Model Interpretation
 
-   - **Feature Importance**: RF allows us to extract feature importance which tells us which variables are most influential in making predictions.
-   
-   - **Interaction Between Variables**: While RF doesn't explicitly give interaction terms like linear regression, high feature importance scores can sometimes hint at interactions. Further, partial dependence plots help visualize the relationship between the target and a set of features, and potentially highlight interactions.
+#### Feature Importance
 
-5. **Visualization**:
-
-   - **Feature importance**: to understand which variables are most influential. 
+RF allows us to extract feature importance which tells us which variables are most influential in making predictions.
    
-   - **Tree Visualization**: Although visualizing all trees might be overwhelming, we will visualize some individual trees to understand the decision-making process.
+![feature importance](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q3_featureImportances.png)
    
-   - **Partial Dependence Plots:**  visualize the relationship between predictors and the target variable, taking into account the average effect of all other variables.
    
-   - **Plotting Predictions vs. Actuals**: This can give us insights into where our model might be under or over-predicting.
-   
-   - **Error Distribution**: Plotting residuals or errors to diagnose model issues.
-
-
 **Implications**
 
 This highlights the most influential factors in determining the migration patterns (as measured by `percentage_weight`).
@@ -393,7 +383,7 @@ This highlights the most influential factors in determining the migration patter
 7. **Year (0.000195)**: 
    - This has a very low importance, indicating that the specific year of data may not significantly affect the migration patterns as measured by `percentage_weight`.
 
-### Addressing the Research Question:
+**Addressing the Research Question***
 
 By examining the importances of these features:
 
@@ -402,53 +392,6 @@ By examining the importances of these features:
 - Political and civil freedoms, as well as safety from violence, are also significant.
 
 - Socio-cultural and health factors, like social support and life expectancy, are secondary but still influential.
-
-
-
-More comprehensively...
-
-The salient feature importances, as manifested in our analysis, urge one to consider the intricate interplay between socio-economic indicators and migratory patterns. This intersection becomes a crucible for understanding the push and pull dynamics that influence individual and collective decisions to migrate.
-
-**1. Economic Determinants and Migration:**
-GDP, both at the source and the target, emerges as a dominant factor. From a neo-classical economic perspective, migration can be construed as an individual's rational response to spatial differences in the availability and remuneration of labor. A higher GDP in the source country may initially seem counterintuitive as a primary factor in influencing out-migration. However, one could hypothesize that a robust economy might facilitate migration by providing individuals with the means to migrate. Conversely, a prosperous target country, with its allure of potential economic opportunities, aligns with established theories positing that individuals migrate in pursuit of better economic prospects.
-
-**2. Political Freedom, Civil Liberties, and Migration:**
-The significance of freedom metrics, both in source and target nations, beckons one to the realms of political sociology and the study of human rights. Freedom might encapsulate various dimensions, from political rights to civil liberties. Historical and contemporary migrations often find their impetus in political persecution, lack of civil liberties, or the quest for a more democratic polity. Understanding the specific nuances of 'freedom'—whether it pertains to electoral democracy, freedom of expression, association, or assembly—can offer granular insights into migratory motivations.
-
-**3. The Violence Paradigm:**
-Violence or perceptions thereof undeniably wield a profound influence on migration. The significance of This highlights the most influential factors in determining the migration patterns (as measured by `percentage_weight`).
-
-1. **GDP_source (0.427067)**:
-   - This indicates that the GDP of the source country is the most significant factor influencing migration patterns. A higher GDP could be indicative of better economic opportunities, which might attract immigrants.
-
-2. **GDP_target (0.103799)**:
-   - The GDP of the target country is also a crucial factor. This suggests that potential migrants are looking at the economic opportunities in the target country, possibly in comparison to their home country.
-
-3. **Freedom Factors**: 
-   - `freedom_source` (0.083849) and `freedom_target` (0.068936) both have significant importance. This suggests that the level of freedom in both the source and target countries is influential in migration decisions. People might migrate from countries with less freedom to countries with more freedom.
-
-4. **Violence Factors**: 
-   - Both `target_total_violence (0.055444)` and `source_total_violence (0.027700)` are impactful. Violence or the perception of violence can be a push or pull factor in migration decisions. People tend to move away from places with high violence rates and towards safer regions.
-
-5. **Social Support and Life Expectancy**: 
-   - These factors from both the source and target countries have relatively good importance, suggesting that social structures and health conditions do play a role in migration decisions.
-
-6. **Differences in GDP, Freedom, etc.**: 
-   - While the individual values of these factors in the source and target countries are more influential, the differences between the two also have some bearing on the decision. This suggests that migrants consider not only the absolute conditions in potential destinations but also how those conditions compare to their home country.
-
-7. **Year (0.000195)**: 
-   - This has a very low importance, indicating that the specific year of data may not significantly affect the migration patterns as measured by `percentage_weight`.
-
-### Addressing the Research Question:
-
-By examining the importances of these features:
-
-- We can infer that economic factors (`GDP_source` and `GDP_target`) are dominant determinants of migration patterns.
-  
-- Political and civil freedoms, as well as safety from violence, are also significant.
-
-- Socio-cultural and health factors, like social support and life expectancy, are secondary but still influential.
-
 
 
 More comprehensively...
@@ -475,10 +418,35 @@ With the increasing urgency of climate change, environmental factors become cruc
 ---
 
 In sum, migration, as a multifaceted phenomenon, needs to be understood at the confluence of economic, political, and sociological factors. Grounding machine learning outcomes within these academic frameworks ensures a comprehensive and nuanced understanding of global migratory patterns.source_total_violence and `target_total_violence` necessitates a deep dive into global events, regional conflicts, and policy landscapes. Factors such as civil wars, ethno-political conflicts, and state-led persecutions might be potent push factors. On the flip side, peace accords, conflict resolutions, or successful nation-building efforts in the target countries could serve as pull factors. Analyzing migrations through the lens of global events allows one to contextualize movements within broader geopolitical narratives.
+   
+   
+   
+   
+#### Interaction Between Variables
+
+While RF doesn't explicitly give interaction terms like linear regression, high feature importance scores can sometimes hint at interactions. Further, partial dependence plots help visualize the relationship between the target and a set of features, and potentially highlight interactions.
 
 
 
-6. **Analyze Areas of Poor Performance**:
+
+  
+#### Tree Visualization
+Although visualizing all trees might be overwhelming, we will visualize some individual trees to understand the decision-making process.
+   
+
+#### Partial Dependence Plots
+visualize the relationship between predictors and the target variable, taking into account the average effect of all other variables.
+   
+#### Plotting Predictions vs. Actuals
+This can give us insights into where our model might be under or over-predicting.
+   
+#### Error Distribution
+Plotting residuals or errors to diagnose model issues.
+   
+   
+   
+   
+### Analyze Areas of Poor Performance
 
    - **Clusters of Poor Predictions**: We will look at clusters where model predictions fail. This will be done by analyzing the residuals (difference between actual and predicted values) and clustering them, for example, using k-means or DBSCAN.
    
