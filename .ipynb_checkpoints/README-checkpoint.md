@@ -50,13 +50,15 @@ region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	
 
 
 # Overview of Research Questions
-**(1) Temporal Trends in Happiness and Migration:**
+**(1) Trends in Migration:**
 Let us set the stage by providing a broad understanding of how migration patterns and happiness scores have shifted over time. Recognizing the trends at a macro level can form the foundation for more specific exploration later on.
    - How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
     
     
-    
-    
+**(2) Trends in Migration and Country Characteristics**
+
+**(3) What are the predictors of migration?**
+- What influences the decision to migrate?    
     
 ---    
 (2) Migration Effects on Host Country :
@@ -113,13 +115,9 @@ Trends for Migration Weight:
 
 - Outward Mean: This represents the average outward migration weight over the years. It starts at approximately 9571 in 2005, decreases to around 7902 in 2010, and then further declines to about 7174 in 2015.
 
-Trends for Happiness:
-- Happiness Difference Mean: Represents the average happiness difference over the years. The happiness difference is calculated as the difference between two happiness metrics (happiness_source_mean and happiness_target_mean) and is used as an indicator of the happiness change due to migration. The happiness difference seems to have a negative trend from -0.025 in 2010 to -0.023 in 2015.
-
 Implications:
-1. Migration Trends: The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
+The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
 
-2. Happiness Levels: The negative trend in happiness_difference_mean implies that, on average, people are migrating to countries that are less happier.
 
 ### Which countries are people migrating to? [REMOVE INSIGNIFICANT COUNTRIES W OVERLAPPING LABELS]
 
@@ -168,8 +166,10 @@ People are migrating away from Mexico, India, China, Bangladesh, Pakistan, Russi
 
 ## Are people migrating to better countries?
 
+A handful of countries in the African continent expirence a better happiness score once they migrate and arrive at the destination country.
 
-**HEATMAP!**
+![world heatmap](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_WorldHappinessMap.png)
+
 
 ### Migrating to happier countries? 
 
@@ -181,69 +181,123 @@ People are migrating away from Mexico, India, China, Bangladesh, Pakistan, Russi
 
 ![less happy](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_chord_diagram_lessHappy.png)
 
-### Migratingn to better GDP?
 
-### Migrating to better life expectancy?
+### Migrating to better GDP?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-### Migrating to less corruption?
+### Migrating to better life expectancy?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-### Migrating to more freedom?
+### Migrating to less corruption?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-### Migrating to less attacks?
+### Migrating to more freedom?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+### Migrating to less attacks?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 # Q3: Decoding the decision to migrate
-By controlling for GDP, we are essentially examining how migration trends change when the influence of economic conditions is held constant. This can help reveal whether migration patterns are driven primarily by economic factors or if other variables play a more significant role.
+Migration is a multifaceted phenomenon driven by a combination of economic, social, political, and environmental factors. The decision to migrate can be based on push factors (negative conditions encouraging or forcing individuals to leave a place) and pull factors (attractive conditions luring individuals to a new place).
+
+The factors we will examine as drivers of migration:
+
+- Economic Factors (GDP)
+- Social Factors (social support)
+- Quality of Life Factors (happiness, life expectancy)
+- Political or Civic Freedoms (perception of corruption, freedom)
+- Cultural or Social Values (generosity)
+- Violence (number of violence events)    
+
+1. **Factors from Dataset**:
+    - **Push Factors**: Factors that may influence someone's decision to leave their home country.
+        - `GDP_source`
+        - `socialSupport_source`
+        - `happiness_source`
+        - `lifeExpectancy_source`
+        - `corruption_source`
+        - `freedom_source`
+        - `generosity_source`
+        - `source_total_violence`
+        
+    - **Pull Factors**: Factors that may attract someone to a new country.
+        - `happiness_target`
+        - `GDP_target`
+        - `socialSupport_target`
+        - `lifeExpectancy_target`
+        - `freedom_target`
+        - `generosity_target`
+        - `corruption_target`
+        - `target_total_violence`
+    
+    - **Differential Factors**: Comparing conditions between the source and target countries.
+        - `happiness_difference`
+        - `GDP_difference`
+        - `socialSupport_difference`
+        - `lifeExpectancy_difference`
+        - `freedom_difference`
+        - `generosity_difference`
+        - `corruption_difference`
+    
+2. **Control Variables**:
+    - These are variables that might affect the outcome (migration) but are not of primary interest. They can account for potential confounders or other variables that might distort the relationship between the main independent variables and the dependent variable (migration).
+        - `year`: Temporal factors can influence migration.
+        - `source`: Country-specific effects, such as policies, can be influential.
+        - `sourceRegion` & `sourceSubRegion`: Regional factors, like regional economic policies or regional conflicts, might play a role.
+        - `target`, `targetRegion`, & `targetSubRegion`: Migration might be influenced by the specificities of target places, such as their immigration policies or socio-cultural attitudes towards immigrants.
+        - `percentage_weight`, `weight`, and `total_weight`: These may capture the intensity or magnitude of migration. They might be your dependent variables, unless you have a different metric for migration.
+
+## Method 
+
+**Random forest**
+
+**Why?** Was proven to have second highest accuracy when compared to other supervised machine learning models [(Kaur et al., 2019)](https://www.mdpi.com/2076-3417/9/8/1613).
 
 
+1. **Data Preprocessing**:
+   
+   - **Encode Categorical Variables**: RF can handle categorical data, but scikit-learn prefers numerical data. So, from our dataframe `violenceHappinessMigration_df`, we will encode:
+      - `source`
+      - `sourceRegion`
+      - `sourceSubRegion`
+      - `target`
+      - `targetRegion`
+      - `targetSubRegion`
+      - `happiness_category` (since it is not ordinal)
+     
+   - **Handle Missing Data**: Ensure that there's no missing data. 
+
+   - **Feature Scaling**:  RF isn't as sensitive to different scales (unlike SVM), and we do not plan to use other algorithms for comparison--so we will skip this step.
+
+2. **Hyperparameter Tuning**:
+
+   - We used Grid Search with Cross-Validation to find optimal hyperparameters (e.g., number of trees, max depth of trees, min samples split).
+
+3. **Model Training and Validation**:
+
+   - **K-Fold Cross Validation**: Implemented 10-fold validation to ensure that our model's performance is consistent across different partitions of your data.
+   
+   - **Model Performance**: Mean Absolute Error (MAE), Mean Squared Error (MSE), R^2.
+
+4. **Model Interpretation**:
+
+   - **Feature Importance**: RF allows us to extract feature importance which tells us which variables are most influential in making predictions.
+   
+   - **Interaction Between Variables**: While RF doesn't explicitly give interaction terms like linear regression, high feature importance scores can sometimes hint at interactions. Further, partial dependence plots help visualize the relationship between the target and a set of features, and potentially highlight interactions.
+
+5. **Visualization**:
+
+   - **Tree Visualization**: Although visualizing all trees might be overwhelming, we will visualize some individual trees to understand the decision-making process.
+   
+   - **Plotting Predictions vs. Actuals**: This can give us insights into where our model might be under or over-predicting.
+   
+   - **Error Distribution**: Plotting residuals or errors to diagnose model issues.
+
+6. **Analyze Areas of Poor Performance**:
+
+   - **Clusters of Poor Predictions**: We will look at clusters where model predictions fail. This will be done by analyzing the residuals (difference between actual and predicted values) and clustering them, for example, using k-means or DBSCAN.
+   
+   - **Explore Clusters**: After identifying clusters with poor predictive power, we explore these clusters to see if there's a commonality among them. Perhaps there's a specific region or time period where the model struggles. We will use exploratory data analysis techniques, like distributions, scatter plots, and summary statistics.
 
 
-
-
+Implementing this methodology will give us a thorough analysis of our dataset using Random Forest. We will have a well-tuned model, insights into the most important features and their interactions, and a deep understanding of where the model performs well and where it struggles.
 
 # Q4:How does an influx of migrants impact the host country in subsequent years?
 - what do I need to adjust for?
@@ -256,7 +310,8 @@ By controlling for GDP, we are essentially examining how migration trends change
 
 
 
-
+# Limitations 
+- Violence dataset is not city specific, but it implies that the whole country is expirencing violence. More granular data is availble from the same dataset, but the happiness and mirgation data do not have the level of unit of anlaysis, hence we could not use it.
 
 
 

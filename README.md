@@ -199,48 +199,105 @@ Migration is a multifaceted phenomenon driven by a combination of economic, soci
 
 The factors we will examine as drivers of migration:
 
-1. **Economic Factors**: 
-    - `GDP_source` and `GDP_target`: A disparity in GDP between the source and target countries can be a major driver for migration. Higher GDP in the target country might indicate better job opportunities and living standards.
+- Economic Factors (GDP)
+- Social Factors (social support)
+- Quality of Life Factors (happiness, life expectancy)
+- Political or Civic Freedoms (perception of corruption, freedom)
+- Cultural or Social Values (generosity)
+- Violence (number of violence events)    
 
-2. **Social Factors**:
-    - `socialSupport_source` and `socialSupport_target`: A lack of social support in the source country or better social support systems in the target country can motivate individuals to migrate.
+1. **Factors from Dataset**:
+    - **Push Factors**: Factors that may influence someone's decision to leave their home country.
+        - `GDP_source`
+        - `socialSupport_source`
+        - `happiness_source`
+        - `lifeExpectancy_source`
+        - `corruption_source`
+        - `freedom_source`
+        - `generosity_source`
+        - `source_total_violence`
+        
+    - **Pull Factors**: Factors that may attract someone to a new country.
+        - `happiness_target`
+        - `GDP_target`
+        - `socialSupport_target`
+        - `lifeExpectancy_target`
+        - `freedom_target`
+        - `generosity_target`
+        - `corruption_target`
+        - `target_total_violence`
+    
+    - **Differential Factors**: Comparing conditions between the source and target countries.
+        - `happiness_difference`
+        - `GDP_difference`
+        - `socialSupport_difference`
+        - `lifeExpectancy_difference`
+        - `freedom_difference`
+        - `generosity_difference`
+        - `corruption_difference`
+    
+2. **Control Variables**:
+    - These are variables that might affect the outcome (migration) but are not of primary interest. They can account for potential confounders or other variables that might distort the relationship between the main independent variables and the dependent variable (migration).
+        - `year`: Temporal factors can influence migration.
+        - `source`: Country-specific effects, such as policies, can be influential.
+        - `sourceRegion` & `sourceSubRegion`: Regional factors, like regional economic policies or regional conflicts, might play a role.
+        - `target`, `targetRegion`, & `targetSubRegion`: Migration might be influenced by the specificities of target places, such as their immigration policies or socio-cultural attitudes towards immigrants.
+        - `percentage_weight`, `weight`, and `total_weight`: These may capture the intensity or magnitude of migration. They might be your dependent variables, unless you have a different metric for migration.
 
-3. **Quality of Life Factors**:
-    - `happiness_source` and `happiness_target`: The happiness index can be a proxy for overall quality of life, with higher scores in the target country potentially drawing migrants.
-    - `lifeExpectancy_source` and `lifeExpectancy_target`: A higher life expectancy in the target country can indicate better healthcare, sanitation, and overall living conditions.
+## Method 
 
-4. **Political or Civic Freedoms**:
-    - `freedom_source` and `freedom_target`: People might migrate from countries with low civic freedoms to ones with higher freedoms.
-    - `corruption_source` and `corruption_target`: High corruption levels can be a push factor driving people away from the source country.
+**Random forest**
 
-5. **Cultural or Social Values**:
-    - `generosity_source` and `generosity_target`: Differences in generosity levels might reflect cultural and societal values, which can influence migration patterns to some extent.
-
-6. **Differences in Indicators**: 
-    - `GDP_difference`, `happiness_difference`: These difference variables can provide a clearer picture of disparities between countries that might drive migration.
-
-To explore the factors that drive migration, we will employ a regression analyses, with the migration volume (`weight`, `total_weight`, or `percentage_weight`) as the dependent variable and the factors mentioned above as independent variables.
-
-Regarding the UCDP Georeferenced Event Dataset, it could be particularly relevant if you're exploring the effects of conflict or violence as a push factor for migration. You might need to aggregate the violence data by source country-year and create variables that represent:
-- Total number of violent events in the source country for a given year
-- Intensity of the violence (e.g., number of casualties)
-- Type of violence (e.g., inter-state conflict, intra-state conflict, one-sided violence)
-
-Finally, for control variables, you should consider:
-- Geographic factors (`sourceRegion`, `sourceSubRegion`, `targetRegion`, `targetSubRegion`): Because proximity and shared borders can be significant determinants of migration.
-- Time (`year`): To account for temporal trends or specific global events.
-
-Remember, while the above points give a broad overview, migration is complex. The significance of each factor can vary depending on the context, specific countries or regions, and time periods in question.
+**Why?** Was proven to have second highest accuracy when compared to other supervised machine learning models [(Kaur et al., 2019)](https://www.mdpi.com/2076-3417/9/8/1613).
 
 
-for control variables:
+1. **Data Preprocessing**:
+   
+   - **Encode Categorical Variables**: RF can handle categorical data, but scikit-learn prefers numerical data. So, from our dataframe `violenceHappinessMigration_df`, we will encode:
+      - `source`
+      - `sourceRegion`
+      - `sourceSubRegion`
+      - `target`
+      - `targetRegion`
+      - `targetSubRegion`
+      - `happiness_category` (since it is not ordinal)
+     
+   - **Handle Missing Data**: Ensure that there's no missing data. 
 
-Geographic factors (sourceRegion, sourceSubRegion, targetRegion, targetSubRegion): Because proximity and shared borders can be significant determinants of migration.
+   - **Feature Scaling**:  RF isn't as sensitive to different scales (unlike SVM), and we do not plan to use other algorithms for comparison--so we will skip this step.
 
-Time (year): To account for temporal trends or specific global events.
+2. **Hyperparameter Tuning**:
+
+   - We used Grid Search with Cross-Validation to find optimal hyperparameters (e.g., number of trees, max depth of trees, min samples split).
+
+3. **Model Training and Validation**:
+
+   - **K-Fold Cross Validation**: Implemented 10-fold validation to ensure that our model's performance is consistent across different partitions of your data.
+   
+   - **Model Performance**: Mean Absolute Error (MAE), Mean Squared Error (MSE), R^2.
+
+4. **Model Interpretation**:
+
+   - **Feature Importance**: RF allows us to extract feature importance which tells us which variables are most influential in making predictions.
+   
+   - **Interaction Between Variables**: While RF doesn't explicitly give interaction terms like linear regression, high feature importance scores can sometimes hint at interactions. Further, partial dependence plots help visualize the relationship between the target and a set of features, and potentially highlight interactions.
+
+5. **Visualization**:
+
+   - **Tree Visualization**: Although visualizing all trees might be overwhelming, we will visualize some individual trees to understand the decision-making process.
+   
+   - **Plotting Predictions vs. Actuals**: This can give us insights into where our model might be under or over-predicting.
+   
+   - **Error Distribution**: Plotting residuals or errors to diagnose model issues.
+
+6. **Analyze Areas of Poor Performance**:
+
+   - **Clusters of Poor Predictions**: We will look at clusters where model predictions fail. This will be done by analyzing the residuals (difference between actual and predicted values) and clustering them, for example, using k-means or DBSCAN.
+   
+   - **Explore Clusters**: After identifying clusters with poor predictive power, we explore these clusters to see if there's a commonality among them. Perhaps there's a specific region or time period where the model struggles. We will use exploratory data analysis techniques, like distributions, scatter plots, and summary statistics.
 
 
-
+Implementing this methodology will give us a thorough analysis of our dataset using Random Forest. We will have a well-tuned model, insights into the most important features and their interactions, and a deep understanding of where the model performs well and where it struggles.
 
 # Q4:How does an influx of migrants impact the host country in subsequent years?
 - what do I need to adjust for?
@@ -253,7 +310,8 @@ Time (year): To account for temporal trends or specific global events.
 
 
 
-
+# Limitations 
+- Violence dataset is not city specific, but it implies that the whole country is expirencing violence. More granular data is availble from the same dataset, but the happiness and mirgation data do not have the level of unit of anlaysis, hence we could not use it.
 
 
 
