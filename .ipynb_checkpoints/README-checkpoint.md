@@ -49,6 +49,17 @@ region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	
 *Countries with less immigrants, more genetically pure?*
 
 
+---
+
+**Environmental Indicators and Climate Migration:**
+With the increasing urgency of climate change, environmental factors become crucial. Delving into data about climate vulnerability, environmental degradation, and resource depletion in both source and target countries might elucidate a new dimension of migration. This could establish a narrative around "climate migrants" or "environmental refugees."
+
+**Digital and Technological Footprints:**
+In an age dominated by digital technology, variables such as internet freedom, digital infrastructure quality, and tech ecosystem vitality can be migration determinants, especially for the young, urban, and skilled demographic.
+
+
+---
+
 # Overview of Research Questions
 **(1) Trends in Migration:**
 Let us set the stage by providing a broad understanding of how migration patterns and happiness scores have shifted over time. Recognizing the trends at a macro level can form the foundation for more specific exploration later on.
@@ -248,7 +259,7 @@ The factors we will examine as drivers of migration:
 
 ## Method 
 
-**Random forest**
+**Random forest**: We are essentially creating multiple decision trees, where each tree gets a different subset of the data (via bootstrapping) and different pair of features. The decisons from all the trees will be taken in aggregate to create the prediction.
 
 **Why?** Was proven to have second highest accuracy when compared to other supervised machine learning models [(Kaur et al., 2019)](https://www.mdpi.com/2076-3417/9/8/1613).
 
@@ -270,7 +281,7 @@ The factors we will examine as drivers of migration:
    
    - **Split into X and y**: We are trying to understand the relative impact of migration and want to compare across countries/regions of different sizes, so we will use `percentage_weight` rather than `weight`. This is becuase it accounts for the size of the population, making it possible to compare migration rates between large and small countries/regions on an equal footing. Additionally, it can give a clearer picture of the actual impact or significance of migration relative to the source population.
    
-   - **Split into training and test set**
+   - **Split into training and test set**: where 30% of the data is reserved for testing, and the rest (70%) is used for training.
 
 2. **Hyperparameter Tuning**:
 
@@ -280,7 +291,63 @@ The factors we will examine as drivers of migration:
 
    - **K-Fold Cross Validation**: Implemented 10-fold validation to ensure that our model's performance is consistent across different partitions of your data.
    
+   While Random Forests inherently utilize bootstrapping, it's essential to remember that this only offers an internal validation. On the other hand, the external k-fold cross-validation sheds light on different aspects of model performance.
+
+**How 10-fold cross-validation works:** We split the training dataset into 10 equal "folds." During each of the 10 iterations, we train the model using 9 folds and validate it using the remaining fold. This way, every fold gets its turn as a validation set, enabling us to assess the model's performance across diverse data subsets.
+
+So, why do go out of our way to add this approach?
+
+- **Performance Insight**: With this method, we receive an array of performance metrics, in our case, ten distinct MSE values. The spread of these scores, captured by `std_mse`, offers a glance into the model's consistency. A low standard deviation suggests stability across varied data partitions, while a high one indicates potential inconsistencies.
+
+- **Optimal Data Use**: Unlike the typical train-test split approach, where some data might remain untouched, k-fold cross-validation ensures we're both training and validating across the entire dataset.
+
+- **Balancing Bias and Variance**: The spread of performance metrics across folds can hint at the model's sensitivity to specific data nuances.
+
+- **A Check Against Overfitting**: While Random Forests have built-in mechanisms against overfitting, they aren't foolproof. Cross-validation aids in spotting signs of overfitting. A high variance in performance across folds might be a red flag.
+
+- **Gauging Generalization**: By averaging performance over multiple data subsets, we gain a more trustworthy perspective on how well the model might perform on unseen data.
+
+- **Harmonizing with GridSearchCV**: Remember our earlier GridSearchCV step? It also banked on cross-validation. Keeping the evaluation method consistent ensures we're comparing apples to apples.
+
+In a nutshell, 10-fold cross-validation is our way of diving deeper into the model's performance, giving us a richer and more nuanced understanding than a simple train-test split would."
+
+10-Fold Cross-Validation MSE: `0.0925 (+/- 0.0114)`
+
+This score is the average of the MSEs from each of the 10 different train-test splits in the k-fold cross-validation. The variability (+/- 0.0114) gives an indication of the consistency of the model performance across different splits.
+
+This average MSE provides a more generalized assessment of the model's performance. The variability indicates how much the performance might change based on different data splits.
+
+   
    - **Model Performance**: Mean Absolute Error (MAE), Mean Squared Error (MSE), R^2.
+   
+
+Overview of the model's performance:
+
+MAE = `0.1428`
+- takes into account error magnitude 
+
+- on average, the model's predictions are off by approximately 14.28% from the true values. In other words, the model is, on average, about 0.1428 units away from the true value.
+
+MSE = `0.0817`
+- variance of errors 
+-  It penalizes larger errors more severely than smaller ones, meaning it's more sensitive to outliers than the MAE.
+
+- our MSE value suggests that our model does a good job of fitting the data, as the value is relatively low.
+
+- This is the MSE calculated after training the model on the entire training set and then testing it on a separate, held-out test set (the one we created with train_test_split).
+- This score gives an indication of how the model, trained on the entire training dataset, performs on unseen data.
+- previously we found the average of the MSEs from each of the 10 different train-test splits in the k-fold cross-validation.
+    - The slight difference between these two MSE values is due to the variability inherent in the dataset and the training process. The fact that the two values are relatively close suggests that our model's performance is consistent and that it generalizes well to new data. The cross-validation MSE gives you a range of likely performances, and the test set MSE falls comfortably within this range, which is a good sign.
+
+R^2 = `0.9808`
+- proportion of the total variation in the dependent variable that's explained by the independent variables 
+- ranges from 0 to 1, where higher values are better, indicating that more variance is explained by the model.
+
+- approximately 98.08% of the variability in the percentage_weight is explained by the model. This suggests that the model captures most of the variance in the data.
+- **!!However!!**  with such high R^2 values we need to be cautious becuase it could be a sign of overfitting.
+    - Given that we used k-fold cross-validation earlier, the risk is somewhat mitigated.
+
+The Random Forest model has shown a very high R^2 score and relatively low error metrics, indicating that it performs well on the test set. The high R^2 score suggests that the features we have selected are very predictive of migration patterns (AKA percentage_weight). 
 
 4. **Model Interpretation**:
 
@@ -300,6 +367,117 @@ The factors we will examine as drivers of migration:
    
    - **Error Distribution**: Plotting residuals or errors to diagnose model issues.
 
+
+**Implications**
+
+This highlights the most influential factors in determining the migration patterns (as measured by `percentage_weight`).
+
+1. **GDP_source (0.427067)**:
+   - This indicates that the GDP of the source country is the most significant factor influencing migration patterns. A higher GDP could be indicative of better economic opportunities, which might attract immigrants.
+
+2. **GDP_target (0.103799)**:
+   - The GDP of the target country is also a crucial factor. This suggests that potential migrants are looking at the economic opportunities in the target country, possibly in comparison to their home country.
+
+3. **Freedom Factors**: 
+   - `freedom_source (0.083849)` and `freedom_target (0.068936)` both have significant importance. This suggests that the level of freedom in both the source and target countries is influential in migration decisions. People might migrate from countries with less freedom to countries with more freedom.
+
+4. **Violence Factors**: 
+   - Both `target_total_violence (0.055444)` and `source_total_violence (0.027700)` are impactful. Violence or the perception of violence can be a push or pull factor in migration decisions. People tend to move away from places with high violence rates and towards safer regions.
+
+5. **Social Support and Life Expectancy**: 
+   - These factors from both the source and target countries have relatively good importance, suggesting that social structures and health conditions do play a role in migration decisions.
+
+6. **Differences in GDP, Freedom, etc.**: 
+   - While the individual values of these factors in the source and target countries are more influential, the differences between the two also have some bearing on the decision. This suggests that migrants consider not only the absolute conditions in potential destinations but also how those conditions compare to their home country.
+
+7. **Year (0.000195)**: 
+   - This has a very low importance, indicating that the specific year of data may not significantly affect the migration patterns as measured by `percentage_weight`.
+
+### Addressing the Research Question:
+
+By examining the importances of these features:
+
+- We can infer that economic factors (`GDP_source` and `GDP_target`) are dominant determinants of migration patterns.
+  
+- Political and civil freedoms, as well as safety from violence, are also significant.
+
+- Socio-cultural and health factors, like social support and life expectancy, are secondary but still influential.
+
+
+
+More comprehensively...
+
+The salient feature importances, as manifested in our analysis, urge one to consider the intricate interplay between socio-economic indicators and migratory patterns. This intersection becomes a crucible for understanding the push and pull dynamics that influence individual and collective decisions to migrate.
+
+**1. Economic Determinants and Migration:**
+GDP, both at the source and the target, emerges as a dominant factor. From a neo-classical economic perspective, migration can be construed as an individual's rational response to spatial differences in the availability and remuneration of labor. A higher GDP in the source country may initially seem counterintuitive as a primary factor in influencing out-migration. However, one could hypothesize that a robust economy might facilitate migration by providing individuals with the means to migrate. Conversely, a prosperous target country, with its allure of potential economic opportunities, aligns with established theories positing that individuals migrate in pursuit of better economic prospects.
+
+**2. Political Freedom, Civil Liberties, and Migration:**
+The significance of freedom metrics, both in source and target nations, beckons one to the realms of political sociology and the study of human rights. Freedom might encapsulate various dimensions, from political rights to civil liberties. Historical and contemporary migrations often find their impetus in political persecution, lack of civil liberties, or the quest for a more democratic polity. Understanding the specific nuances of 'freedom'—whether it pertains to electoral democracy, freedom of expression, association, or assembly—can offer granular insights into migratory motivations.
+
+**3. The Violence Paradigm:**
+Violence or perceptions thereof undeniably wield a profound influence on migration. The significance of This highlights the most influential factors in determining the migration patterns (as measured by `percentage_weight`).
+
+1. **GDP_source (0.427067)**:
+   - This indicates that the GDP of the source country is the most significant factor influencing migration patterns. A higher GDP could be indicative of better economic opportunities, which might attract immigrants.
+
+2. **GDP_target (0.103799)**:
+   - The GDP of the target country is also a crucial factor. This suggests that potential migrants are looking at the economic opportunities in the target country, possibly in comparison to their home country.
+
+3. **Freedom Factors**: 
+   - `freedom_source` (0.083849) and `freedom_target` (0.068936) both have significant importance. This suggests that the level of freedom in both the source and target countries is influential in migration decisions. People might migrate from countries with less freedom to countries with more freedom.
+
+4. **Violence Factors**: 
+   - Both `target_total_violence (0.055444)` and `source_total_violence (0.027700)` are impactful. Violence or the perception of violence can be a push or pull factor in migration decisions. People tend to move away from places with high violence rates and towards safer regions.
+
+5. **Social Support and Life Expectancy**: 
+   - These factors from both the source and target countries have relatively good importance, suggesting that social structures and health conditions do play a role in migration decisions.
+
+6. **Differences in GDP, Freedom, etc.**: 
+   - While the individual values of these factors in the source and target countries are more influential, the differences between the two also have some bearing on the decision. This suggests that migrants consider not only the absolute conditions in potential destinations but also how those conditions compare to their home country.
+
+7. **Year (0.000195)**: 
+   - This has a very low importance, indicating that the specific year of data may not significantly affect the migration patterns as measured by `percentage_weight`.
+
+### Addressing the Research Question:
+
+By examining the importances of these features:
+
+- We can infer that economic factors (`GDP_source` and `GDP_target`) are dominant determinants of migration patterns.
+  
+- Political and civil freedoms, as well as safety from violence, are also significant.
+
+- Socio-cultural and health factors, like social support and life expectancy, are secondary but still influential.
+
+
+
+More comprehensively...
+
+The salient feature importances, as manifested in our analysis, urge one to consider the intricate interplay between socio-economic indicators and migratory patterns. This intersection becomes a crucible for understanding the push and pull dynamics that influence individual and collective decisions to migrate.
+
+**1. Economic Determinants and Migration:**
+GDP, both at the source and the target, emerges as a dominant factor. From a neo-classical economic perspective, migration can be construed as an individual's rational response to spatial differences in the availability and remuneration of labor. A higher GDP in the source country may initially seem counterintuitive as a primary factor in influencing out-migration. However, one could hypothesize that a robust economy might facilitate migration by providing individuals with the means to migrate. Conversely, a prosperous target country, with its allure of potential economic opportunities, aligns with established theories positing that individuals migrate in pursuit of better economic prospects.
+
+**2. Political Freedom, Civil Liberties, and Migration:**
+The significance of freedom metrics, both in source and target nations, beckons one to the realms of political sociology and the study of human rights. Freedom might encapsulate various dimensions, from political rights to civil liberties. Historical and contemporary migrations often find their impetus in political persecution, lack of civil liberties, or the quest for a more democratic polity. Understanding the specific nuances of 'freedom'—whether it pertains to electoral democracy, freedom of expression, association, or assembly—can offer granular insights into migratory motivations.
+
+**3. The Violence Paradigm:**
+Violence or perceptions thereof undeniably wield a profound influence on migration. The significance of `source_total_violence` and `target_total_violence` necessitates a deep dive into global events, regional conflicts, and policy landscapes. Factors such as civil wars, ethno-political conflicts, and state-led persecutions might be potent push factors. On the flip side, peace accords, conflict resolutions, or successful nation-building efforts in the target countries could serve as pull factors. Analyzing migrations through the lens of global events allows one to contextualize movements within broader geopolitical narratives.
+
+**4. Policy Implications and Predictive Models:**
+The derived insights hold the potential to inform policy frameworks, both at national and international levels. Policymakers, equipped with the understanding of key determinants, can frame strategies that either facilitate desired migrations (like skilled labor inflow) or mitigate forced migrations (like refugees due to political persecution). Moreover, with increasing sophistication in modeling techniques, there's potential to predict future migration patterns, assisting in strategic planning and proactive policy-making.
+
+**5. Climate Migration:**
+With the increasing urgency of climate change, environmental factors become crucial. Delving into data about climate vulnerability, environmental degradation, and resource depletion in both source and target countries might elucidate a new dimension of migration. This could establish a narrative around "climate migrants" or "environmental refugees."
+
+**6. Digital and Technological Footprints:**
+
+---
+
+In sum, migration, as a multifaceted phenomenon, needs to be understood at the confluence of economic, political, and sociological factors. Grounding machine learning outcomes within these academic frameworks ensures a comprehensive and nuanced understanding of global migratory patterns.source_total_violence and `target_total_violence` necessitates a deep dive into global events, regional conflicts, and policy landscapes. Factors such as civil wars, ethno-political conflicts, and state-led persecutions might be potent push factors. On the flip side, peace accords, conflict resolutions, or successful nation-building efforts in the target countries could serve as pull factors. Analyzing migrations through the lens of global events allows one to contextualize movements within broader geopolitical narratives.
+
+
+
 6. **Analyze Areas of Poor Performance**:
 
    - **Clusters of Poor Predictions**: We will look at clusters where model predictions fail. This will be done by analyzing the residuals (difference between actual and predicted values) and clustering them, for example, using k-means or DBSCAN.
@@ -311,19 +489,42 @@ The factors we will examine as drivers of migration:
 
 Implementing this methodology will give us a thorough analysis of our dataset using Random Forest. We will have a well-tuned model, insights into the most important features and their interactions, and a deep understanding of where the model performs well and where it struggles.
 
-# Q4:How does an influx of migrants impact the host country in subsequent years?
-- what do I need to adjust for?
-
-
-
-
-
-
-
-
-
-# Limitations 
+# limitations 
+- Selection Bias: Migrants are a selective group, and the decision to move to a particular country may be influenced by factors that are difficult to capture in the data. For example, individuals who are more optimistic or have higher adaptability may be more likely to migrate, which can bias the results.
+- Confounding Variables: There are likely to be other variables that influence both migration decisions and happiness levels. For example, cultural factors, language, job opportunities, family support, and personal characteristics can all impact both migration choices and happiness.
+- Cultural Magnetism and Soft Power: Beyond the palpable economic and political indicators, the cultural allure of a destination can be a significant pull factor. This encompasses facets like art, cinema, literature, music, fashion, and even academic or entrepreneurial ecosystems. The soft power a country wields could make it a preferred destination for migration.
 - Violence dataset is not city specific, but it implies that the whole country is expirencing violence. More granular data is availble from the same dataset, but the happiness and mirgation data do not have the level of unit of anlaysis, hence we could not use it.
+
+# Future directions 
+- Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
+We used a regression analysis to explore the correlation between a nation's average happiness score (dependent variable) and genetic diversity metrics (independent variables). The model was adjusted for socioeconomic factors and historical events.
+
+- Are there discernible patterns in allelic frequencies among countries with higher emigration rates as compared to those with lower rates?
+This question is focused on understanding patterns in allelic frequencies among countries with different emigration rates. Population genetics and statistical analyses was used for exploring the relationship between genetics and migration patterns.
+
+- How does an influx of migrants impact the host country in subsequent years?
+
+-  How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -332,9 +533,6 @@ Implementing this methodology will give us a thorough analysis of our dataset us
 
 # Archive
 ---
-# Q1: How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
-## Data preprocesssing
-
 
 
 
@@ -362,54 +560,7 @@ Implementing this methodology will give us a thorough analysis of our dataset us
     - Analyze the happiness score trend in these zones compared to global average.
 
 
-# Q2: How does an influx of migrants impact the happiness score of the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
-For this research question, supervised machine learning will be used to build a regression model. We will use migration-related features, such as the number of migrants, economic impact, unemployment rates, and social integration programs, as independent variables to predict the happiness score of the host country in subsequent years.
-
-Sunburst Plot: Utilize a sunburst plot to visualize the migration patterns and happiness changes across destination and origin regions or sub-regions. This hierarchical visualization can reveal migration flows and happiness trends at different levels of granularity.
-
-**How can I visualize if migrants going from an original country to an another changes the happiness score in the destination?**
-
-**Relationship between Migration and Happiness**
-Looking at the happiness difference can provide insights into how migration impacts happiness at the target location. Positive values indicate that people tend to be happier in the target location compared to the source location, while negative values suggest the opposite. By examining the relationship between migration weight and happiness difference, we can gain a better understanding of how migration decisions might influence happiness outcomes.
-
-
-**a)** validate if there is a linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'), if so, we can use linear regression model.
-
-The scatter plot indicates that there is a non-linear relationship between the predictor variable ('weight') and the target variable ('happiness_difference'). The high density of data points at 0, forming a straight vertical line, suggests that there is a concentration of cases where there is little or no change in happiness ('happiness_difference') despite varying 'migration_weight.' This phenomenon could be due to a specific group of individuals with similar characteristics or circumstances that experience minimal changes in happiness regardless of their migration weights.
-
-The clustering of data points horizontally between 1.5 and -2.3 indicates that there is some level of association between 'migration_weight' and 'happiness_difference,' but it is not linear. Instead, it shows that for certain values of 'migration_weight,' there are clusters of data points with similar happiness differences, suggesting a potential threshold effect or non-linear relationship.
-
-A Support Vector Machine (SVM) regression might better captur
-
-
-
-
-
-
-
-
-# limitations 
-- Selection Bias: Migrants are a selective group, and the decision to move to a particular country may be influenced by factors that are difficult to capture in the data. For example, individuals who are more optimistic or have higher adaptability may be more likely to migrate, which can bias the results.
-- Confounding Variables: There are likely to be other variables that influence both migration decisions and happiness levels. For example, cultural factors, language, job opportunities, family support, and personal characteristics can all impact both migration choices and happiness.
-
-
-# Future directions 
-- Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
-We used a regression analysis to explore the correlation between a nation's average happiness score (dependent variable) and genetic diversity metrics (independent variables). The model was adjusted for socioeconomic factors and historical events.
-
-- Are there discernible patterns in allelic frequencies among countries with higher emigration rates as compared to those with lower rates?
-This question is focused on understanding patterns in allelic frequencies among countries with different emigration rates. Population genetics and statistical analyses was used for exploring the relationship between genetics and migration patterns.
-
-
-
-
-
-
-
-
-
-## Q1 Visualization 
-### Circular migration plot 
+# Circular migration plot 
 representing the inter-relationships between data points in a graph. The nodes are arranged radially around a circle with the relationships between the data points drawn as arcs (or chords) connecting the nodes. The number of chords is scaled by a weight (migration flow).
 This code was written based on this [source](https://holoviews.org/reference/elements/bokeh/Chord.html).
 
@@ -430,16 +581,5 @@ This code was written based on this [source](https://holoviews.org/reference/ele
 ![circular chord plot example](https://www.science.org/cms/10.1126/science.1248676/asset/0c9e0fd7-57fa-4460-9c26-6b82230adf14/assets/graphic/343_1520_f2.jpeg)
 
 References used to write code for chord diagram: [Used chapter 5 as it details how to create migrations plots in javascript and R](https://github.com/null2/globalmigration/blob/master/VID%20WP%20Visualising%20Migration%20Flow%20Data%20with%20Circular%20Plots.pdf), [source 1](https://holoviews.org/reference/elements/bokeh/Chord.html), [source 2](https://stackoverflow.com/questions/65344303/circular-chord-diagram-in-python), [source 3](https://d3blocks.github.io/d3blocks/pages/html/Chord.html), [source 4 (guide for chord diagrams in R)](https://download.gsb.bund.de/BIB/global_flow/VID%20WP%20Visualising%20Migration%20Flow%20Data%20with%20Circular%20Plots.pdf)
-
-
-
-
-
-
-
-
-
-
-
 
 
