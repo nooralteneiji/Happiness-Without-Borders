@@ -1,9 +1,5 @@
-```diff
-- account for people irrationally scoring their happiness
-```
-
-# Dataset 
-[World Happiness Report](https://worldhappiness.report/archive/)
+# Datasets 
+## [World Happiness Report](https://worldhappiness.report/archive/)
 - `country`: The name of the country for which the happiness data is reported.
 - `year`: The year in which the happiness data is recorded.
 - `GDP`: Gross Domestic Product per capita, which measures the economic output per person in a country.
@@ -15,7 +11,7 @@
 - 'happiness'
 
   
-
+## Migration flow 
 [dataset](https://figshare.com/collections/Bilateral_international_migration_flow_estimates_for_200_countries/4470464)
 - Provides an estimation of bi-lateral flow of migration, not captured by standard migration datasets (i.e., [Our World In Data](https://ourworldindata.org/migration)).
 
@@ -35,7 +31,6 @@ Transit migrants move from and to countries, neither of which is their country o
 - `da_pb_closed` (demographic accounting, pseudo baysian method)
    - We will only this estimation since [Abel and Cohen, 2019](https://www.nature.com/articles/s41597-022-01271-z)(https://www.nature.com/articles/s41597-019-0089-3) found the Pseudo-Bayesian demographic accounting method to be the best estimation of migration flow from migrant stock data (how many migrants are residing in a country during a specific point in time) published by the World Bank and United Nations.
 
-region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	regionflow_1990	regionflow_1995	regionflow_2000	regionflow_2005	countryflow_1990	countryflow_1995	countryflow_2000	countryflow_2005
 
 **Why was this dataset was choosen and not UN/World Bank data?**
 - Widely available data on the number of people living outside of their country of birth do not adequately capture contemporary intensities and patterns of global migration flows[(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
@@ -43,38 +38,19 @@ region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	
 - However, flow data are essential for understanding contemporary trends in international migration and for determining relationships.
       - They used an innovative methodology to estimate bilateral flows between 196 countries from 1990 through 2010. The estimates reflect migration transitions and thus cannot be compared to annual movements flow data published by United Nations and Eurostat 2. The authors used statistical missing data methods to estimate the five-year migrant flows that are required to meet differences in migrant stock totals. For example, if the number of foreign-born in the United States increases between two time periods, they estimated the minimum migrant flows between the US and all other countries in the world that are required to meet this increase. For each country of birth, they estimated the minimum number of migrant flows required to match differences in stocks by assuming that people are more likely to stay than to move. This estimation procedure was replicated simultaneously for all 196 countries to estimate birthplace specific flow tables, resulting in a comparable set of global migration flows 3.
 
-
+## Violent events
 [UCDP Georeferenced Event Dataset](https://ucdp.uu.se/downloads/index.html#ged_global)
 
-*Countries with less immigrants, more genetically pure?*
 
 
 
+## Climate change vulnerability 
 
 [climate dataset](https://resourcewatch.org/data/explore/cli029a-Vulnerability-to-Climate-Change-Index?section=Discover&selectedCollection=&zoom=3&lat=0&lng=0&pitch=0&bearing=0&basemap=dark&labels=light&layers=%255B%257B%2522dataset%2522%253A%25224d2d47c1-fed1-4484-83e3-c91c3f6f7315%2522%252C%2522opacity%2522%253A1%252C%2522layer%2522%253A%25226c2a0892-87e7-41ef-b4f0-e53c89baab5c%2522%257D%255D&aoi=&page=1&sort=most-viewed&sortDirection=-1)
 [index variable descr](https://gain.nd.edu/assets/254377/nd_gain_technical_document_2015.pdf)
 
-
-
----
-
-
-# Overview of Research Questions
-**(1) Trends in Migration:**
-Let us set the stage by providing a broad understanding of how migration patterns and happiness scores have shifted over time. Recognizing the trends at a macro level can form the foundation for more specific exploration later on.
-   - How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
-    
-    
-**(2) Trends in Migration and Country Characteristics**
-
-**(3) What are the predictors of migration?**
-- What influences the decision to migrate?    
-    
-  **Environmental Indicators and Climate Migration:**
 With the increasing urgency of climate change, environmental factors become crucial. Delving into data about climate vulnerability, environmental degradation, and resource depletion in both source and target countries might elucidate a new dimension of migration. This could establish a narrative around "climate migrants" or "environmental refugees."
 
-
-**looking at Digital and Technological Footprints** variables such as internet freedom, digital infrastructure quality, and tech ecosystem vitality can be migration determinants, especially for the young, urban, and skilled demographic.
 
 
 ---
@@ -120,7 +96,7 @@ Implications:
 The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
 
 
-### Which countries are people migrating to? [REMOVE INSIGNIFICANT COUNTRIES W OVERLAPPING LABELS]
+### Which countries are people migrating to? 
 
 **WE ARE ONLY LOOKING AT countries that send and recieve at least 0.5% of world's migrants**
 
@@ -129,9 +105,6 @@ The decreasing trends in transit mean, return mean, and outward mean migration w
 **Overall routes**
 
 ![chord_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q1_chord_diagram_countryRoute.png)
-
-
-!!!!!!!!!!!!!! show flow between top 50 countries that send and recieve at least 0.5% of world's migrants!!!!!!!!!!!
 
 **Which countries are most people migrating to?**
 
@@ -183,15 +156,14 @@ A handful of countries in the African continent expirence a better happiness sco
 ![less happy](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_chord_diagram_lessHappy.png)
 
 
-### Migrating to better GDP?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+### More questions...
+- Migrating to better GDP?
+- Migrating to better life expectancy?
+- Migrating to less corruption?
+- Migrating to more freedom?
+- Migrating to less violence attacks?
 
-### Migrating to better life expectancy?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-### Migrating to less corruption?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-### Migrating to more freedom?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-### Migrating to less attacks?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+etc., etc., HOWEVER, the actual factors that come into play for the decision to migrate is much more interesting...
 
 ---
 
@@ -432,71 +404,181 @@ Specifcally, Partial Dependence Plots (PDPs) can show the relationship between a
 - destination countries "India" and "Germany" are associated with higher migration rates. Factors specific to these countries may be attracting more migrants, such as economic opportunities, social support, or other favorable conditions.  
   
 #### Tree Visualization
-Although visualizing all trees might be overwhelming, we will visualize some individual trees to understand the decision-making process.
-   
-   
-#### Plotting Predictions vs. Actuals
-This can give us insights into where our model might be under or over-predicting.
-   
-#### Error Distribution
-Plotting residuals or errors to diagnose model issues.
-   
-   
-   
-   
-### Analyze Areas of Poor Performance
+Visualizing all trees might be overwhelming, so we will visualize best tree to understand the decision-making process.
+      
+![best tree](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q3_bestTree.png)
+      
+      
+The structure of the decision tree provides insights into how different variables may be interacting and their collective influence on predicting migration weight. 
 
-   - **Clusters of Poor Predictions**: We will look at clusters where model predictions fail. This will be done by analyzing the residuals (difference between actual and predicted values) and clustering them, for example, using k-means or DBSCAN.
-   
-   - **Explore Clusters**: After identifying clusters with poor predictive power, we explore these clusters to see if there's a commonality among them. Perhaps there's a specific region or time period where the model struggles. We will use exploratory data analysis techniques, like distributions, scatter plots, and summary statistics.
-    - Cluster the data based on residuals (e.g., using K-means clustering).
-    - Analyze the characteristics of each cluster. Are there common features in these mis-predicted instances?
-    - We will use SHAP (SHapley Additive exPlanations) or LIME (Local Interpretable Model-agnostic Explanations) to understand why the model made certain predictions.
+##### Observations:
 
-Implementing this methodology will give us a thorough analysis of our dataset using Random Forest. We will have a well-tuned model, insights into the most important features and their interactions, and a deep understanding of where the model performs well and where it struggles.
+1. **Prominence of Source Country**: 
+   - The fact that `source_Pakistan` is the root node indicates that it's a major deciding factor in predicting migration weight. If a given migration flow doesn't involve Pakistan as the source, the next immediate question the tree asks pertains to migration involving `source_India`.
+   
+2. **Climate Concerns**: 
+   - `ClimateIndex_difference` branches immediately after `source_Pakistan` and `source_India`. This showcases the significance of climate vulnerabilities as a motivating factor for migration, especially when combined with the specific circumstances of the originating country.
+   - Further, `target_climateIndex` appears multiple times in subsequent branches. This underscores the role that the climate index of the target country plays in migration decisions. It's evident that the climate profile of both the source and destination countries interact to influence migration.
+
+3. **Socio-Economic and Happiness Metrics**:
+   - The branching based on `happiness of source country` under `source_India` implies that the general well-being or satisfaction level in the source country (India, in this instance) interacts with other factors in determining migration.
+   
+4. **Interaction Between Source and Target**: 
+   - The presence of `target_India` in the tree's deeper layers indicates an interaction between climate vulnerabilities and the specific target country. This interaction might suggest that migrants from certain areas are more inclined to move to India when other conditions, such as climate vulnerabilities, align.
+
+##### Answering Research Questions:
+
+- **Primary Interactions**: The most significant interactions are evident in how branches diverge. For example, migrations from Pakistan are immediately contextualized by the difference in climate vulnerabilities between the source and target countries. This suggests an interaction between country-specific issues in Pakistan and environmental factors.
+  
+- **Secondary Interactions**: Further down the tree, the decision pathways diverge based on other countries or conditions (like happiness in the source country). This showcases secondary interactions. For instance, for migrations from India, the decision tree indicates that the choice of destination might be influenced by the happiness level in India combined with the climate index of the target country.
+
+- **Nested Interactions**: The tree structure also suggests nested interactions. For instance, the choice of moving based on climate vulnerabilities is subsequently influenced by the specific target country (like `target_India`). 
+
+##### Implications:
+
+**Redefining Migration Causality**:
+    - The dominant position of `source_Pakistan` in the decision-making hierarchy challenges prevailing macro-level theories of migration. Instead of broad-spectrum socio-economic factors, specific factors intrinsic to specific nation-states seem to be more important. We should thus approach the migration discourse with a degree of country-specific granularity rather than overly broad generalizations.
+
+**The Environmental Turn in Migration Studies**:
+    - The interactions also challenge a monolithic narrative of migration. It isn't just about economic opportunities or conflict. The tree suggests that factors such as climate change and well-being (happiness) play a crucial role and can't be ignored.
+
+**The Well-being Paradox**:
+    - The significant influence of the `happiness of source country`, especially under the branch of `source_India`, highlights the intricate balance between objective socio-economic indicators and subjective well-being assessments. It triggers the age-old debate in political philosophy about material well-being versus overall life satisfaction and how they influence individual and collective decision-making.
+
+**Geopolitical Implications of Climate and Migration**:
+    - The nested interaction, especially involving `target_India`, raises crucial geopolitical questions. It suggests that certain target countries are seen as refuges in light of climatic vulnerabilities. This has profound implications for India's foreign policy and its position in South-South cooperation on climate-induced migration. It's a clarion call for regional cooperation frameworks that preemptively address such migration surges, balancing humanitarian imperatives with national security concerns.
+   
+
+# Q4 Analyze Areas of Poor Performance
+
+## Residual analysis 
+
+![sub plots](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q3_residualAnalysis.png)
+
+Residual vs. Predicted Value
+- Residuals are randomly scattered around the horizontal axis
+    - a linear regression model is appropriate for the data.
+- residuals center on zero 
+    - the model does not systematically overestimate or underestimate the dependent variable.
+- some values are extremely above or below zero--> they are our outliers/bias in the predictions.
+
+Histogram 
+- shows that residuals are normally distributed
+    - though some extreme values at zero.
+    - the model's parameter estimates are likly to be efficient = narrower confidence intervals and better hypothesis testing validity.
+
+Q-Q plot 
+- visually determine how close the residuals are to a normal distribution
+- tails deviate from the line
+
+## Using DBSCAN to identify residuals 
+
+![clusters](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q4_outlierFeatureImportances.png)
+
+
+## Analyzing residuals 
+The feature importance values for the outliers provide some crucial insights:
+
+### Feature importance 
+
+![feature importance](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q4_identifyCluster.png)
+**Life Expectancy Difference**
+
+With an importance score of `0.480889`, the difference in life expectancy between the source and target countries is the dominant feature for predicting migration percentages among the outlier cases. 
+
+Implications:
+- Migration decisions for these outlier groups are heavily influenced by the prospects of a better or worse life expectancy in the target country compared to their home country.
+- This might suggest that health services, quality of life, or conditions that impact longevity (like conflict, famine, or disease) are critical determinants for these specific migratory movements.
+
+**Climate Index Difference:
+
+The difference in climate indices between source and target countries is the second most important feature with an importance of `0.123176`.
+
+Implications:
+- Environmental or climate factors are significant in migration decisions for these outliers. This can be related to climate change impacts, where certain regions are becoming less habitable due to rising temperatures, flooding, or other environmental changes.
+- It reinforces the idea that environmental migrants or climate refugees might be a noteworthy segment within these outliers.
+
+**Generosity Source:
+
+Generosity from the source country has an importance score of `0.037300`.
+
+Implications:
+- The level of generosity or altruism in the source country might indicate a society's cohesiveness and the well-being of its inhabitants. If people are migrating from places with higher generosity, it may hint at other factors pushing them to migrate, like political unrest or economic challenges.
+- Alternatively, it may suggest that in contexts where societal generosity is high but other living conditions are unfavorable, people might be more prone to seek better conditions elsewhere.
+
+**GDP Difference:
+
+The GDP difference between source and target countries has an importance of `0.036737`.
+
+Implications:
+- Economic factors, though not as dominant as life expectancy or climate for these outliers, still play a role. Migrants might be seeking better economic opportunities or escaping economic downturns in their home countries.
+
+**Source Climate Index:
+
+The climate index of the source country itself (not the difference) also holds some importance with a score of `0.031664`.
+
+Implications:
+- The specific environmental conditions in the source country are driving some migration patterns. If a source country has extreme climate conditions or is facing significant environmental challenges, its inhabitants might seek to relocate regardless of the target country's climate.
+
+In summary, for these outlier cases, while economic conditions play a role, it appears that life quality (represented by life expectancy) and environmental factors are particularly dominant in influencing migration decisions. This might hint at specific push factors in the source countries that are driving these unique migration patterns.
+   
+### Interaction between variables 
+Pairplot not very meaningful since few data points.
+
+![pairplot](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q4_pairplot.png)
+
+![matrix](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/q4_corMatrix.png)
+
 
 # Concluding thoughts 
 
 The data-driven findings, offer profound insights into the complex web of international migration. It's an interaction between economics, societal well-being, geopolitics, and now, environmental considerations. Migration, as this study suggests, is far from a monolithic phenomenon; it's a reflection of a world in flux, constantly reshaped by a plethora of forces, both overt and covert.
 
 
-# limitations 
-- Selection Bias: Migrants are a selective group, and the decision to move to a particular country may be influenced by factors that are difficult to capture in the data. For example, individuals who are more optimistic or have higher adaptability may be more likely to migrate, which can bias the results.
-- Confounding Variables: There are likely to be other variables that influence both migration decisions and happiness levels. For example, cultural factors, language, job opportunities, family support, and personal characteristics can all impact both migration choices and happiness.
-- Cultural Magnetism and Soft Power: Beyond the palpable economic and political indicators, the cultural allure of a destination can be a significant pull factor. This encompasses facets like art, cinema, literature, music, fashion, and even academic or entrepreneurial ecosystems. The soft power a country wields could make it a preferred destination for migration.
-- Violence dataset is not city specific, but it implies that the whole country is expirencing violence. More granular data is availble from the same dataset, but the happiness and mirgation data do not have the level of unit of anlaysis, hence we could not use it.
-- Missing countries in Internet dataset
+# Limitations 
+- Selection Bias:
+  - Migrants are a selective group, influenced by factors not fully captured in the data.
+  - Optimism and adaptability may lead to biased migration results.
+
+- Confounding Variables:
+  - Other variables like culture, language, job opportunities, family support, and personal characteristics can influence both migration decisions and happiness outcomes.
+
+- Cultural Magnetism and Soft Power:
+  - The cultural allure and soft power of a destination can strongly influence migration decisions.
+  - Factors such as art, cinema, literature, music, fashion, and academic or entrepreneurial ecosystems play a role in attracting migrants.
+
+- Limited Granularity of Violence Dataset:
+  - The violence dataset lacks city-specific information, which may lead to generalizations about the entire country's situation.
+  - More granular data exists but could not be utilized due to differences in the level of unit of analysis with the happiness and migration data.
+
+- Missing Countries in Internet Dataset:
+  - The internet dataset may have missing information for some countries, potentially impacting the analysis of digital and technological footprints as migration determinants.
 
 # Future directions 
-- Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
-We used a regression analysis to explore the correlation between a nation's average happiness score (dependent variable) and genetic diversity metrics (independent variables). The model was adjusted for socioeconomic factors and historical events.
+- Delving Deeper into Migration Factors:
+   - Focus on Pakistan's specific context and climate vulnerabilities in migration decisions.
+   - Investigate historical, political, and social reasons for migration patterns.
 
-- Are there discernible patterns in allelic frequencies among countries with higher emigration rates as compared to those with lower rates?
-This question is focused on understanding patterns in allelic frequencies among countries with different emigration rates. Population genetics and statistical analyses was used for exploring the relationship between genetics and migration patterns.
+- Digital and Technological Footprints as Migration Determinants:
+   - Explore variables like internet freedom, digital infrastructure quality, and tech ecosystem vitality.
+   - Study their influence on migration, especially among the young, urban, and skilled demographic.
 
-- How does an influx of migrants impact the host country in subsequent years?
+- Correlation between Happiness Score and Genetic Diversity:
+   - Conduct regression analysis to examine the relationship between a nation's happiness score and genetic diversity.
+   - Control for socioeconomic factors and historical events that might impact both variables.
 
--  How have migration patterns changed over time in relation to shifts in the happiness scores of both source and destination countries?
+- Patterns in Allelic Frequencies and Emigration Rates:
+   - Utilize population genetics and statistical analyses to identify patterns in allelic frequencies among countries with different emigration rates.
 
-- looking at Digital and Technological Footprints. variables such as internet freedom, digital infrastructure quality, and tech ecosystem vitality can be migration determinants, especially for the young, urban, and skilled demographic.
+- Impact of Migrants on Host Countries:
+   - Investigate how an influx of migrants impacts host countries in subsequent years.
 
-- can look at more specific indicators 
-SENSITIVITY INDICATOR 1: Natural capital dependency
-- The indicator captures a country’s reliance on ecosystem services, which are themselves exposed to disruption by climate change.
+- Changes in Migration Patterns and Happiness Scores:
+   - Analyze migration patterns over time in relation to shifts in happiness scores of both source and destination countries.
 
-EXPOSURE INDICATOR 1: Projected change of biome distribution
-- The indicator captures the threat of changes in biome function. It is based on the projected impact of climate change on the area occupied by different biomes within a country.
-
-EXPOSURE INDICATOR 1: Projected change of warm periods
-- Human living conditions are threatened by the increased intensity and/or frequency of extreme weather, including storms, flooding, landslides and heat waves, that climate change is bringing or will bring (Satterthwaite, 2008).
-
-
-EXPOSURE INDICATOR 2: Projected change of flood hazard
-- An indicator that complements the warm period projection, to capture one of the important disastrous threats to human living conditions.
-
-
-SENSITIVITY INDICATOR 1: Urban concentration
-- Countries in which urban populations are concentrated in a single or a small number of urban areas are considered more sensitive to climate change(Lankao, 2008). According to this indicator, a country with a highly concentrated urban sector and a highly urbanized population is the most sensitive.
+- Specific Indicators for Climate-Driven Migration:
+   - Examine sensitivity and exposure indicators related to climate change and migration.
+   - Study natural capital dependency, projected changes in biome distribution, warm periods, flood hazards, and urban concentration.
 
 
 
@@ -520,55 +602,12 @@ SENSITIVITY INDICATOR 1: Urban concentration
 
 
 
-# Archive
----
-
-(2) Migration Effects on Host Country :
-Now that we understand the overarching patterns, it's logical to then focus on the specific implications of these patterns.
-- How does an influx of migrants impact the host country in subsequent years? Adjust for economic impact, unemployment rates, and social integration programs.
-
-(2) Are people migrating to happier countries?
-- Chord plot with unhapping countries with people flowing to happier ones?
-
-(3) Happiness and Genetic Diversity:
-After exploring the direct impact of migration on happiness, this question delves deeper into understanding if there's any inherent relationship between a country's happiness score and the genetic diversity of its population.
-- Is there a correlation between a nation's average happiness score and the genetic diversity of its population? Control for socioeconomic factors and historical events that might have impacted both happiness and genetic diversity.
-
-(4) Genetics and Migration:
-Building on the knowledge of how happiness relates to genetic diversity, it's a fitting progression to then explore how genetic factors might influence or be influenced by migration patterns.
-- Are there discernible patterns in allelic frequencies among countries with higher emigration rates as compared to those with lower rates? Consider adjusting for shared historical migrations or neighboring country influence.
 
 
 
-
-
-
-
-
-
-
-
-3. **Difference in Happiness Scores**: We compared the distribution of differences in happiness scores (source - target) over time. If the distribution leans towards positive, it suggests people migrate to happier countries.
-
-4. **Correlation Analysis**: Measure correlation coefficients between the difference in happiness scores and migration weights. A positive correlation might suggest that as the happiness difference increases, so does the migration weight.
-
-5. **Economic Downturns**:
-    - Identify years of global economic downturns (you might need external data for this or define it based on a decrease in average global GDP).
-    - Analyze migration patterns during these years. Do more people migrate during economic downturns?
-    - Check the relationship between happiness scores and migration during these years. Do people tend to move from countries with larger drops in GDP or happiness?
-
-6. **Regional Conflicts**:
-    - Identify major regional conflicts during the time frame (this would require external data).
-    - See if there's a spike in migration from these conflict zones.
-    - Analyze the happiness score trend in these zones compared to global average.
-
-
-# Circular migration plot 
+# EXTRA: Circular migration plot 
 representing the inter-relationships between data points in a graph. The nodes are arranged radially around a circle with the relationships between the data points drawn as arcs (or chords) connecting the nodes. The number of chords is scaled by a weight (migration flow).
 This code was written based on this [source](https://holoviews.org/reference/elements/bokeh/Chord.html).
-
-
-
 
 
 **References**

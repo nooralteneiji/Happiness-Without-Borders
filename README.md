@@ -1,9 +1,5 @@
-```diff
-- account for people irrationally scoring their happiness
-```
-
-# Dataset 
-##[World Happiness Report](https://worldhappiness.report/archive/)
+# Datasets 
+## [World Happiness Report](https://worldhappiness.report/archive/)
 - `country`: The name of the country for which the happiness data is reported.
 - `year`: The year in which the happiness data is recorded.
 - `GDP`: Gross Domestic Product per capita, which measures the economic output per person in a country.
@@ -35,7 +31,6 @@ Transit migrants move from and to countries, neither of which is their country o
 - `da_pb_closed` (demographic accounting, pseudo baysian method)
    - We will only this estimation since [Abel and Cohen, 2019](https://www.nature.com/articles/s41597-022-01271-z)(https://www.nature.com/articles/s41597-019-0089-3) found the Pseudo-Bayesian demographic accounting method to be the best estimation of migration flow from migrant stock data (how many migrants are residing in a country during a specific point in time) published by the World Bank and United Nations.
 
-region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	regionflow_1990	regionflow_1995	regionflow_2000	regionflow_2005	countryflow_1990	countryflow_1995	countryflow_2000	countryflow_2005
 
 **Why was this dataset was choosen and not UN/World Bank data?**
 - Widely available data on the number of people living outside of their country of birth do not adequately capture contemporary intensities and patterns of global migration flows[(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
@@ -46,8 +41,7 @@ region_orig	region_orig_id	region_dest	region_dest_id	country_orig	country_dest	
 ## Violent events
 [UCDP Georeferenced Event Dataset](https://ucdp.uu.se/downloads/index.html#ged_global)
 
-  **Environmental Indicators and Climate Migration:**
-With the increasing urgency of climate change, environmental factors become crucial. Delving into data about climate vulnerability, environmental degradation, and resource depletion in both source and target countries might elucidate a new dimension of migration. This could establish a narrative around "climate migrants" or "environmental refugees."
+
 
 
 ## Climate change vulnerability 
@@ -55,6 +49,7 @@ With the increasing urgency of climate change, environmental factors become cruc
 [climate dataset](https://resourcewatch.org/data/explore/cli029a-Vulnerability-to-Climate-Change-Index?section=Discover&selectedCollection=&zoom=3&lat=0&lng=0&pitch=0&bearing=0&basemap=dark&labels=light&layers=%255B%257B%2522dataset%2522%253A%25224d2d47c1-fed1-4484-83e3-c91c3f6f7315%2522%252C%2522opacity%2522%253A1%252C%2522layer%2522%253A%25226c2a0892-87e7-41ef-b4f0-e53c89baab5c%2522%257D%255D&aoi=&page=1&sort=most-viewed&sortDirection=-1)
 [index variable descr](https://gain.nd.edu/assets/254377/nd_gain_technical_document_2015.pdf)
 
+With the increasing urgency of climate change, environmental factors become crucial. Delving into data about climate vulnerability, environmental degradation, and resource depletion in both source and target countries might elucidate a new dimension of migration. This could establish a narrative around "climate migrants" or "environmental refugees."
 
 
 
@@ -101,7 +96,7 @@ Implications:
 The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
 
 
-### Which countries are people migrating to? [REMOVE INSIGNIFICANT COUNTRIES W OVERLAPPING LABELS]
+### Which countries are people migrating to? 
 
 **WE ARE ONLY LOOKING AT countries that send and recieve at least 0.5% of world's migrants**
 
@@ -110,9 +105,6 @@ The decreasing trends in transit mean, return mean, and outward mean migration w
 **Overall routes**
 
 ![chord_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q1_chord_diagram_countryRoute.png)
-
-
-!!!!!!!!!!!!!! show flow between top 50 countries that send and recieve at least 0.5% of world's migrants!!!!!!!!!!!
 
 **Which countries are most people migrating to?**
 
@@ -164,15 +156,14 @@ A handful of countries in the African continent expirence a better happiness sco
 ![less happy](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q2_chord_diagram_lessHappy.png)
 
 
-### Migrating to better GDP?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+### More questions...
+- Migrating to better GDP?
+- Migrating to better life expectancy?
+- Migrating to less corruption?
+- Migrating to more freedom?
+- Migrating to less violence attacks?
 
-### Migrating to better life expectancy?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-### Migrating to less corruption?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-### Migrating to more freedom?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-### Migrating to less attacks?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+etc., etc., HOWEVER, the actual factors that come into play for the decision to migrate is much more interesting...
 
 ---
 
