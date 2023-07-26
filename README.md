@@ -184,7 +184,7 @@ The factors we will examine as drivers of migration:
 - Cultural or Social Values (generosity)
 - Violence (number of violence events)    
 
-1. **Factors from Dataset**:
+**Factors from Dataset**:
     - **Push Factors**: Factors that may influence someone's decision to leave their home country.
         - `GDP_source`
         - `socialSupport_source`
@@ -214,13 +214,15 @@ The factors we will examine as drivers of migration:
         - `generosity_difference`
         - `corruption_difference`
     
-2. **Control Variables**:
+**Control Variables**:
     - These are variables that might affect the outcome (migration) but are not of primary interest. They can account for potential confounders or other variables that might distort the relationship between the main independent variables and the dependent variable (migration).
         - `year`: Temporal factors can influence migration.
         - `source`: Country-specific effects, such as policies, can be influential.
         - `sourceRegion` & `sourceSubRegion`: Regional factors, like regional economic policies or regional conflicts, might play a role.
         - `target`, `targetRegion`, & `targetSubRegion`: Migration might be influenced by the specificities of target places, such as their immigration policies or socio-cultural attitudes towards immigrants.
-        - `percentage_weight`, `weight`, and `total_weight`: These may capture the intensity or magnitude of migration. They might be your dependent variables, unless you have a different metric for migration.
+
+**Dependent variables**
+        - `percentage_weight`, `weight`, and `total_weight`: These may capture the intensity or magnitude of migration. 
 
 ## Method 
 
@@ -367,7 +369,7 @@ The model is suggesting that the fact that a person is migrating from Pakistan i
 ##### Link to Research Question:
 
 **Factors Influencing Migration**: 
-   - From the feature importance, it's clear that both source and target countries significantly influence migration decisions. Specific countries are highlighted, which means for a deeper understanding, you might need to investigate country-specific dynamics further.
+   - From the feature importance, it's clear that both source and target countries significantly influence migration decisions. Specific countries are highlighted, which means for a deeper understanding, we would need to investigate country-specific dynamics further.
    - Economic, societal, and environmental metrics play a crucial role in decision-making.
 
 ##### Implications:
