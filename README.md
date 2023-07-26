@@ -36,14 +36,25 @@ Transit migrants move from and to countries, neither of which is their country o
 
 
 **Why was this dataset was choosen and not UN/World Bank data?**
-- Widely available data on the number of people living outside of their country of birth do not adequately capture contemporary intensities and patterns of global migration flows[(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
-- Stock data, measured at a given point in time as the number of people living in a country other than the one in which they were born, are more widely available and far easier to measure across countries than are flow data capturing movements over a period of time [(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
-- However, flow data are essential for understanding contemporary trends in international migration and for determining relationships.
-      - They used an innovative methodology to estimate bilateral flows between 196 countries from 1990 through 2010. The estimates reflect migration transitions and thus cannot be compared to annual movements flow data published by United Nations and Eurostat 2. The authors used statistical missing data methods to estimate the five-year migrant flows that are required to meet differences in migrant stock totals. For example, if the number of foreign-born in the United States increases between two time periods, they estimated the minimum migrant flows between the US and all other countries in the world that are required to meet this increase. For each country of birth, they estimated the minimum number of migrant flows required to match differences in stocks by assuming that people are more likely to stay than to move. This estimation procedure was replicated simultaneously for all 196 countries to estimate birthplace specific flow tables, resulting in a comparable set of global migration flows 3.
+- **Inadequate Representation of Contemporary Migration**: 
+  - Widely available data often don't accurately capture current global migration patterns [(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
+  
+- **Availability and Ease of Stock Data**:
+  - Stock data, which counts people living in a different country than where they were born at a specific point in time, is easier to obtain and measure across countries compared to flow data which captures movement over a period of time [(Abel and Sanders, 2014)](https://www.science.org/doi/full/10.1126/science.1248676?ijkey=ypit4%2Fxi7wo4M&siteid=sci&keytype=ref).
+
+- **Importance of Flow Data**:
+  - Flow data is crucial to understand current international migration trends and establish relationships.
+  
+- **Innovative Methodology**: 
+  - The authors estimated bilateral flows between 196 countries from 1990-2010.
+  - The methodology represents migration transitions, making it distinct from annual movement data by the United Nations and Eurostat.
+  - Using statistical missing data methods, they estimated five-year migrant flows necessary to account for differences in migrant stock totals.
+  - An example: If foreign-born numbers in the US rise over two periods, they calculated the migrant flows needed between the US and other countries to match this increase.
+  - They assumed people are more inclined to stay rather than move, thus estimating the minimum flow required to match stock differences for every birthplace.
+  - This procedure was applied to all 196 countries, leading to a consistent set of global migration flows.
 
 ## Violent events
 [UCDP Georeferenced Event Dataset](https://ucdp.uu.se/downloads/index.html#ged_global)
-
 
 
 
@@ -99,7 +110,19 @@ Implications:
 The decreasing trends in transit mean, return mean, and outward mean migration weight indicate that there might have been changes in migration patterns over the years. The decrease in transit migration weight suggests a reduction in the number of people migrating between two countries which they are not originally from. Similarly, the decline in return and outward migration weights indicates a possible decrease in the number of people returning to their home countries or leaving their home countries, respectively.
 
 
-### Which countries are people migrating to? 
+### Circular Chord Diagram  
+representing the inter-relationships between data points in a graph. The nodes are arranged radially around a circle with the relationships between the data points drawn as arcs (or chords) connecting the nodes. The number of chords is scaled by a weight (migration flow).
+This code was written based on this [source](https://holoviews.org/reference/elements/bokeh/Chord.html).
+
+
+**References**
+[Inspiration 1](http://download.gsb.bund.de/BIB/global_flow/) 
+
+References used to write code for chord diagram: [Used chapter 5 as it details how to create migrations plots in javascript and R](https://github.com/null2/globalmigration/blob/master/VID%20WP%20Visualising%20Migration%20Flow%20Data%20with%20Circular%20Plots.pdf), [source 1](https://holoviews.org/reference/elements/bokeh/Chord.html), [source 2](https://stackoverflow.com/questions/65344303/circular-chord-diagram-in-python), [source 3](https://d3blocks.github.io/d3blocks/pages/html/Chord.html), [source 4 (guide for chord diagrams in R)](https://download.gsb.bund.de/BIB/global_flow/VID%20WP%20Visualising%20Migration%20Flow%20Data%20with%20Circular%20Plots.pdf)
+
+
+#### Which countries are people migrating to? 
+
 
 **WE ARE ONLY LOOKING AT countries that send and recieve at least 0.5% of world's migrants**
 
@@ -110,6 +133,7 @@ The decreasing trends in transit mean, return mean, and outward mean migration w
 ![chord_country](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q1_chord_diagram_countryRoute.png)
 
 **Which countries are most people migrating to?**
+
 
 *HOW TO READ THE GRAPH: Look at the largest nodes. They represent the destination country, so all chords coming from other countries indicate where the people are migrating from to reach the destination country.*
 
@@ -125,13 +149,13 @@ People are migrating away from Mexico, India, China, Bangladesh, Pakistan, Russi
 
 ![country away](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/Q1_chord_diagram_topCountryAway.png)
 
-### Which regions are people migrating away from? 
+#### Which regions are people migrating away from? 
 
 *HOW TO READ THE GRAPH: Look at the largest nodes. They represent the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
 
 ![region](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/Outputs/Figures/chord_diagram_Region.png)  
 
-### Which sub-regions are people migrating away from? 
+#### Which sub-regions are people migrating away from? 
 
 *HOW TO READ THE GRAPH: Look at the largest nodes. They represent the country of origin, so all chords coming from other countries indicate where the people are migrating towards*
 
@@ -609,24 +633,5 @@ The data-driven findings, offer profound insights into the complex web of intern
 
 
 
-
-# EXTRA: Circular migration plot 
-representing the inter-relationships between data points in a graph. The nodes are arranged radially around a circle with the relationships between the data points drawn as arcs (or chords) connecting the nodes. The number of chords is scaled by a weight (migration flow).
-This code was written based on this [source](https://holoviews.org/reference/elements/bokeh/Chord.html).
-
-
-**References**
-[Inspiration 1](http://download.gsb.bund.de/BIB/global_flow/) 
-
-[Global migration datasheet](http://download.gsb.bund.de/BIB/global_flow/VID_Global_Migration_Datasheet_web.pdf)
-
-![inspo](https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/15025469/preview.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIYCQYOYV5JSSROOA/20230722/eu-west-1/s3/aws4_request&X-Amz-Date=20230722T162858Z&X-Amz-Expires=10&X-Amz-SignedHeaders=host&X-Amz-Signature=ce612851f3829e2033fe6baf0a073882eb8dbfeacfa380167a0823de20e47339)
-
-
-![How to read flow plot](https://github.com/nooralteneiji/Happiness-Without-Borders/blob/main/FlowChord.png)
-
-![circular chord plot example](https://www.science.org/cms/10.1126/science.1248676/asset/0c9e0fd7-57fa-4460-9c26-6b82230adf14/assets/graphic/343_1520_f2.jpeg)
-
-References used to write code for chord diagram: [Used chapter 5 as it details how to create migrations plots in javascript and R](https://github.com/null2/globalmigration/blob/master/VID%20WP%20Visualising%20Migration%20Flow%20Data%20with%20Circular%20Plots.pdf), [source 1](https://holoviews.org/reference/elements/bokeh/Chord.html), [source 2](https://stackoverflow.com/questions/65344303/circular-chord-diagram-in-python), [source 3](https://d3blocks.github.io/d3blocks/pages/html/Chord.html), [source 4 (guide for chord diagrams in R)](https://download.gsb.bund.de/BIB/global_flow/VID%20WP%20Visualising%20Migration%20Flow%20Data%20with%20Circular%20Plots.pdf)
 
 
