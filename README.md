@@ -45,27 +45,13 @@ Transit migrants move from and to countries, neither of which is their country o
 - **Importance of Flow Data**:
   - Flow data is crucial to understand current international migration trends and establish relationships.
   
-- **Innovative Methodology**: 
+- **Methodology**: 
   - The authors estimated bilateral flows between 196 countries from 1990-2010.
   - The methodology represents migration transitions, making it distinct from annual movement data by the United Nations and Eurostat.
   - Using statistical missing data methods, they estimated five-year migrant flows necessary to account for differences in migrant stock totals.
   - An example: If foreign-born numbers in the US rise over two periods, they calculated the migrant flows needed between the US and other countries to match this increase.
   - They assumed people are more inclined to stay rather than move, thus estimating the minimum flow required to match stock differences for every birthplace.
   - This procedure was applied to all 196 countries, leading to a consistent set of global migration flows.
-
-## Violent events
-[UCDP Georeferenced Event Dataset](https://ucdp.uu.se/downloads/index.html#ged_global)
-
-
-
-## Climate change vulnerability 
-
-[climate dataset](https://resourcewatch.org/data/explore/cli029a-Vulnerability-to-Climate-Change-Index?section=Discover&selectedCollection=&zoom=3&lat=0&lng=0&pitch=0&bearing=0&basemap=dark&labels=light&layers=%255B%257B%2522dataset%2522%253A%25224d2d47c1-fed1-4484-83e3-c91c3f6f7315%2522%252C%2522opacity%2522%253A1%252C%2522layer%2522%253A%25226c2a0892-87e7-41ef-b4f0-e53c89baab5c%2522%257D%255D&aoi=&page=1&sort=most-viewed&sortDirection=-1)
-[index variable descr](https://gain.nd.edu/assets/254377/nd_gain_technical_document_2015.pdf)
-
-With the increasing urgency of climate change, environmental factors become crucial. Delving into data about climate vulnerability, environmental degradation, and resource depletion in both source and target countries might elucidate a new dimension of migration. This could establish a narrative around "climate migrants" or "environmental refugees."
-
-
 
 ---
 
