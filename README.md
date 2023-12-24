@@ -343,21 +343,21 @@ RF allows us to extract feature importance which tells us which variables are mo
    
 This highlights the most influential factors in determining the migration patterns (as measured by `percentage_weight`).
    
-##### Observations:
+#### Observations
 
-1. **Country-Specific Influences**: 
+1. **Country-Specific Influences**
     - **Source Countries**: The model indicates that the source countries, specifically `source_Pakistan`, `source_India`, `source_Bangladesh`, `source_China`, and `source_Saudi Arabia`, are amongst the most important features in predicting migration patterns (`percentage_weight`).
     - **Target Countries**: Similarly, target countries like `target_Germany`, `target_India`, and `target_Bahrain` play significant roles.
     - These findings suggest that specific countries play a pivotal role in influencing global migration patterns.
 
-2. **Economic & Societal Metrics**: 
+2. **Economic & Societal Metrics**
     - Features like `GDP_source`, `lifeExpectancy_source`, and `happiness_source` are high up on the list, emphasizing the role of economic and societal well-being metrics in influencing migration decisions.
 
-3. **Implicit Interactions and Patterns**: 
+3. **Implicit Interactions and Patterns**
     - Some features like `source_Pakistan` and `source_India` have higher importances than general metrics like `GDP_source`. This suggests that there might be country-specific factors, beyond just GDP or happiness, influencing migration. 
     - There might be political, social, or environmental factors at play in these countries that drive migration.
 
-4. **Climate & Environmental Considerations**: 
+4. **Climate & Environmental Considerations**
     - The presence of `target_climateIndex` and `source_climateIndex` indicates that environmental considerations might be playing a role in migration decisions. This could hint at factors such as climate change, environmental degradation, or natural disasters impacting migration patterns.
     
     
@@ -365,34 +365,36 @@ This highlights the most influential factors in determining the migration patter
 
 The model is suggesting that the fact that a person is migrating from Pakistan is a strong indicator for the outcome variable, `percentage_weight`, at least within the scope of this model specifically. 
 
-1. Relevance of `source_Pakistan`: If `source_Pakistan` emerges as one of the most influential predictors, it underscores that there are significant migration patterns (or weights) emanating from Pakistan. This could be due to a multitude of reasons: economic factors, societal unrest, geopolitical tensions, environmental challenges, or a combination of these and other factors.
+1. Relevance of `source_Pakistan`
+If `source_Pakistan` emerges as one of the most influential predictors, it underscores that there are significant migration patterns (or weights) emanating from Pakistan. This could be due to a multitude of reasons: economic factors, societal unrest, geopolitical tensions, environmental challenges, or a combination of these and other factors.
 
-2. Comparing to `GDP_difference`: The fact that `source_Pakistan` has a higher feature importance than `GDP_difference` suggests that the specific migration dynamics related to Pakistan might be more telling than the economic disparities (as measured by GDP differences) between source and target countries. It could imply:
+3. Comparing to `GDP_difference`
+The fact that `source_Pakistan` has a higher feature importance than `GDP_difference` suggests that the specific migration dynamics related to Pakistan might be more telling than the economic disparities (as measured by GDP differences) between source and target countries. It could imply:
 
    - Economic Factors: Even if the GDP difference between Pakistan and another country isn't vast, other intrinsic factors within Pakistan might be compelling its citizens to migrate. These factors could be unemployment rates, wage disparities, or local economic downturns that aren't fully captured by just looking at GDP.
    
    - Beyond Economics: Migration isn't solely driven by economic reasons. Political instability, religious or ethnic tensions, environmental factors, or educational opportunities can be substantial motivators. If the migration from Pakistan is more predictive than the GDP difference, it suggests that non-economic factors might be at play prominently in the case of Pakistan.
 
-3. Holistic Interpretation: While `source_Pakistan` is highly predictive, it's crucial not to discount the role of other variables. For instance, `GDP_difference` might still play a significant role in migration patterns from other countries. Each predictor captures a unique facet of the broader migration landscape, and their collective interplay shapes the overall dynamics.
+5. Holistic Interpretation: While `source_Pakistan` is highly predictive, it's crucial not to discount the role of other variables. For instance, `GDP_difference` might still play a significant role in migration patterns from other countries. Each predictor captures a unique facet of the broader migration landscape, and their collective interplay shapes the overall dynamics.
 
 
 ##### Link to Research Question:
 
-**Factors Influencing Migration**: 
+**Factors Influencing Migration**
    - From the feature importance, it's clear that both source and target countries significantly influence migration decisions. Specific countries are highlighted, which means for a deeper understanding, we would need to investigate country-specific dynamics further.
    - Economic, societal, and environmental metrics play a crucial role in decision-making.
 
-##### Implications:
+##### Implications
 
-1. **Geo-political Undertones and Migration Dynamics**:
-    - **Emerging Economies and Migration**: The elevated significance of countries such as `source_Pakistan`, `source_India`, and `source_Bangladesh` may resonate with the broader political narrative of South Asia. The socio-political unrest, combined with the burgeoning youth population and economic constraints, might be catalyzing migration waves.
-    - **Traditional Destinations**: The prominence of `target_Germany` underscores the traditional allure of Western Europe as a bastion of stability and economic opportunity. On the other hand, `target_Bahrain` suggests the continuation of the Gulf countries' role as sought-after destinations for labor migrants, particularly from South Asia.
+1. **Geo-political Undertones and Migration Dynamics**
+    - **Emerging Economies and Migration.** The elevated significance of countries such as `source_Pakistan`, `source_India`, and `source_Bangladesh` may resonate with the broader political narrative of South Asia. The socio-political unrest, combined with the burgeoning youth population and economic constraints, might be catalyzing migration waves.
+    - **Traditional Destinations.** The prominence of `target_Germany` underscores the traditional allure of Western Europe as a bastion of stability and economic opportunity. On the other hand, `target_Bahrain` suggests the continuation of the Gulf countries' role as sought-after destinations for labor migrants, particularly from South Asia.
 
-2. **Economic Disparities and Societal Tensions**:
+2. **Economic Disparities and Societal Tensions**
     - While GDP is often touted as a primary factor for migration, the relative significance of `GDP_source` juxtaposed against `happiness_source` and `lifeExpectancy_source` reflects a nuanced tapestry of migration. It underscores that migration is not just an economic decision but is profoundly intertwined with societal well-being and broader life satisfaction metrics.
 
-3. **The Silent Narratives Beyond Macro Metrics**:
-    - The disproportionate weightage of specific source countries, even over overarching economic indicators like `GDP_source`, is revelatory. It hints at deeper, often unspoken or under-represented narratives. For instance, the role of political instability, regional tensions, or societal fractures in countries like Pakistan and India might be overshadowing purely economic considerations.
+3. **Under-represented story**
+    - The disproportionate weightage of specific source countries, even over overarching economic indicators like `GDP_source`, is revelant. It hints at deeper, often unspoken or under-represented narratives. For instance, the role of political instability, regional tensions, or societal fractures in countries like Pakistan and India might be overshadowing purely economic considerations.
 
 4. **Environmental Factors and the New Migration Paradigm**: 
     - The emphasis on `target_climateIndex` and `source_climateIndex` is evocative of the emerging global narrative around climate-induced migration. It paints a picture of a world where environmental considerations, from degrading ecosystems to more immediate natural calamities, are becoming as central to migration decisions as traditional economic or political factors. The confluence of climate change and its socio-political repercussions cannot be understated in this new migration dynamic.   
@@ -428,39 +430,39 @@ The structure of the decision tree provides insights into how different variable
 
 ##### Observations:
 
-1. **Prominence of Source Country**: 
+1. **Prominence of Source Country** 
    - The fact that `source_Pakistan` is the root node indicates that it's a major deciding factor in predicting migration weight. If a given migration flow doesn't involve Pakistan as the source, the next immediate question the tree asks pertains to migration involving `source_India`.
    
-2. **Climate Concerns**: 
+2. **Climate Concerns**
    - `ClimateIndex_difference` branches immediately after `source_Pakistan` and `source_India`. This showcases the significance of climate vulnerabilities as a motivating factor for migration, especially when combined with the specific circumstances of the originating country.
    - Further, `target_climateIndex` appears multiple times in subsequent branches. This underscores the role that the climate index of the target country plays in migration decisions. It's evident that the climate profile of both the source and destination countries interact to influence migration.
 
-3. **Socio-Economic and Happiness Metrics**:
+3. **Socio-Economic and Happiness Metrics**
    - The branching based on `happiness of source country` under `source_India` implies that the general well-being or satisfaction level in the source country (India, in this instance) interacts with other factors in determining migration.
    
-4. **Interaction Between Source and Target**: 
+4. **Interaction Between Source and Target**
    - The presence of `target_India` in the tree's deeper layers indicates an interaction between climate vulnerabilities and the specific target country. This interaction might suggest that migrants from certain areas are more inclined to move to India when other conditions, such as climate vulnerabilities, align.
 
-##### Answering Research Questions:
+##### Answering Research Questions
 
-- **Primary Interactions**: The most significant interactions are evident in how branches diverge. For example, migrations from Pakistan are immediately contextualized by the difference in climate vulnerabilities between the source and target countries. This suggests an interaction between country-specific issues in Pakistan and environmental factors.
+- **Primary Interactions.** The most significant interactions are evident in how branches diverge. For example, migrations from Pakistan are immediately contextualized by the difference in climate vulnerabilities between the source and target countries. This suggests an interaction between country-specific issues in Pakistan and environmental factors.
   
-- **Secondary Interactions**: Further down the tree, the decision pathways diverge based on other countries or conditions (like happiness in the source country). This showcases secondary interactions. For instance, for migrations from India, the decision tree indicates that the choice of destination might be influenced by the happiness level in India combined with the climate index of the target country.
+- **Secondary Interactions.** Further down the tree, the decision pathways diverge based on other countries or conditions (like happiness in the source country). This showcases secondary interactions. For instance, for migrations from India, the decision tree indicates that the choice of destination might be influenced by the happiness level in India combined with the climate index of the target country.
 
-- **Nested Interactions**: The tree structure also suggests nested interactions. For instance, the choice of moving based on climate vulnerabilities is subsequently influenced by the specific target country (like `target_India`). 
+- **Nested Interactions.** The tree structure also suggests nested interactions. For instance, the choice of moving based on climate vulnerabilities is subsequently influenced by the specific target country (like `target_India`). 
 
-##### Implications:
+##### Implications
 
-**Redefining Migration Causality**:
+**Redefining Migration Causality**
     - The dominant position of `source_Pakistan` in the decision-making hierarchy challenges prevailing macro-level theories of migration. Instead of broad-spectrum socio-economic factors, specific factors intrinsic to specific nation-states seem to be more important. We should thus approach the migration discourse with a degree of country-specific granularity rather than overly broad generalizations.
 
-**The Environmental Turn in Migration Studies**:
+**The Environmental Turn in Migration Studies**
     - The interactions also challenge a monolithic narrative of migration. It isn't just about economic opportunities or conflict. The tree suggests that factors such as climate change and well-being (happiness) play a crucial role and can't be ignored.
 
-**The Well-being Paradox**:
+**Well-being Paradox?**
     - The significant influence of the `happiness of source country`, especially under the branch of `source_India`, highlights the intricate balance between objective socio-economic indicators and subjective well-being assessments. It triggers the age-old debate in political philosophy about material well-being versus overall life satisfaction and how they influence individual and collective decision-making.
 
-**Geopolitical Implications of Climate and Migration**:
+**Geopolitical Implications of Climate and Migration**
     - The nested interaction, especially involving `target_India`, raises crucial geopolitical questions. It suggests that certain target countries are seen as refuges in light of climatic vulnerabilities. This has profound implications for India's foreign policy and its position in South-South cooperation on climate-induced migration. It's a clarion call for regional cooperation frameworks that preemptively address such migration surges, balancing humanitarian imperatives with national security concerns.
    
 
@@ -505,7 +507,7 @@ Implications:
 - Migration decisions for these outlier groups are heavily influenced by the prospects of a better or worse life expectancy in the target country compared to their home country.
 - This might suggest that health services, quality of life, or conditions that impact longevity (like conflict, famine, or disease) are critical determinants for these specific migratory movements.
 
-**Climate Index Difference:
+**Climate Index Difference**
 
 The difference in climate indices between source and target countries is the second most important feature with an importance of `0.123176`.
 
@@ -513,7 +515,7 @@ Implications:
 - Environmental or climate factors are significant in migration decisions for these outliers. This can be related to climate change impacts, where certain regions are becoming less habitable due to rising temperatures, flooding, or other environmental changes.
 - It reinforces the idea that environmental migrants or climate refugees might be a noteworthy segment within these outliers.
 
-**Generosity Source:
+**Generosity Source**
 
 Generosity from the source country has an importance score of `0.037300`.
 
@@ -521,14 +523,14 @@ Implications:
 - The level of generosity or altruism in the source country might indicate a society's cohesiveness and the well-being of its inhabitants. If people are migrating from places with higher generosity, it may hint at other factors pushing them to migrate, like political unrest or economic challenges.
 - Alternatively, it may suggest that in contexts where societal generosity is high but other living conditions are unfavorable, people might be more prone to seek better conditions elsewhere.
 
-**GDP Difference:
+**GDP Difference**
 
 The GDP difference between source and target countries has an importance of `0.036737`.
 
 Implications:
 - Economic factors, though not as dominant as life expectancy or climate for these outliers, still play a role. Migrants might be seeking better economic opportunities or escaping economic downturns in their home countries.
 
-**Source Climate Index:
+**Source Climate Index**
 
 The climate index of the source country itself (not the difference) also holds some importance with a score of `0.031664`.
 
